@@ -1,0 +1,14 @@
+.scrambled-text {
+  cursor: crosshair;
+  white-space: pre-wrap;
+}
+
+.scrambled-text__char {
+  display: inline-block;
+  min-width: .12em;
+  will-change: contents;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrambled-text { cursor: text; }
+}

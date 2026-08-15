@@ -1,0 +1,890 @@
+.buyback-page {
+  --bb-bg: #02070a;
+  --bb-surface: #071217;
+  --bb-line: #123b47;
+  --bb-text: #efffff;
+  --bb-muted: #8eadb6;
+  --bb-cyan: #00f2ff;
+  --bb-cyan-soft: #71fbff;
+  --bb-red: #ff6e86;
+  --bb-green: #63e8c1;
+  color: var(--bb-text);
+  background: linear-gradient(180deg, #020608 0%, #061216 48%, #020709 100%);
+  min-height: 100vh;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.buyback-page .hero {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  min-height: calc(550px + 64px);
+  height: calc(550px + 64px);
+  padding-top: 64px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 12px;
+  overflow: hidden;
+  border-radius: 0 0 32px 32px;
+}
+
+.buyback-page .hero-bg-image {
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+.buyback-page .hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(88, 28, 135, 0.8), rgba(45, 19, 85, 0.58), rgba(0, 0, 0, 0.1));
+}
+
+.buyback-page .hero-mask {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  height: 154px;
+  background: url('/images/buyback/hero-mask.png') bottom center / 100% 100% no-repeat;
+  pointer-events: none;
+}
+
+.buyback-page .hero-copy {
+  position: relative;
+  z-index: 3;
+  width: min(1080px, calc(100% - 48px));
+  margin-top: 0;
+  text-align: center;
+}
+
+.buyback-page .hero h1 {
+  margin: 0 0 16px;
+  color: #fff;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.buyback-page .hero p {
+  max-width: 760px;
+  margin: 0 auto;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.buyback-page .tracker-shell {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 64px 0 72px;
+  position: relative;
+  isolation: isolate;
+}
+
+.buyback-page .eyebrow {
+  margin: 0 0 8px;
+  color: #819ba3;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.buyback-page h2 {
+  margin: 0 0 0;
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+.buyback-page h3 {
+  margin-top: 0;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.buyback-page .section-subtitle {
+  margin: 0;
+  color: var(--bb-muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.buyback-page .metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.buyback-page .metric-card,
+.buyback-page .panel,
+.buyback-page .impact-grid article,
+.buyback-page .community-card {
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: linear-gradient(145deg, rgba(10, 23, 28, 0.96), rgba(4, 10, 13, 0.96));
+}
+
+.buyback-page .metric-card {
+  min-height: 90px;
+  padding: 17px;
+  display: flex;
+  flex-direction: column;
+}
+
+.buyback-page .metric-card span {
+  color: #929abb;
+  font-size: 11px;
+}
+
+.buyback-page .metric-card strong {
+  margin: 11px 0 0;
+  color: #edf8fa;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.buyback-page .metric-card small {
+  margin-top: auto;
+  padding-top: 8px;
+  color: #6f98a3;
+  font-size: 11px;
+}
+
+.buyback-page .metric-card--burn {
+  border-left: 2px solid var(--bb-cyan);
+  box-shadow: inset 12px 0 28px rgba(0, 242, 255, 0.035);
+}
+
+.buyback-page .metric-card--burn strong {
+  color: var(--bb-cyan-soft);
+}
+
+.buyback-page .panel {
+  margin-bottom: 24px;
+  padding: 22px;
+  position: relative;
+  overflow: hidden;
+  border-color: rgba(109, 139, 148, 0.28);
+  background: linear-gradient(145deg, rgba(8, 19, 24, 0.98), rgba(3, 9, 12, 0.98));
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.19);
+}
+
+.buyback-page .panel::before {
+  position: absolute;
+  top: 0;
+  left: 22px;
+  width: 150px;
+  height: 1px;
+  content: '';
+  background: linear-gradient(90deg, transparent, #4d747d, transparent);
+  opacity: 0.85;
+}
+
+.buyback-page .section-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.buyback-page .live-badge {
+  padding: 6px 9px;
+  border: 1px solid rgba(0, 242, 255, 0.38);
+  border-radius: 999px;
+  color: #b8f9fc;
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(0, 242, 255, 0.045);
+}
+
+.buyback-page .live-badge i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background: var(--bb-cyan);
+  box-shadow: 0 0 10px var(--bb-cyan);
+}
+
+.buyback-page .progress-summary {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 14px;
+}
+
+.buyback-page .progress-summary div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.buyback-page .progress-summary span {
+  color: #83aab4;
+  font-size: 11px;
+}
+
+.buyback-page .progress-summary strong {
+  font-size: 20px;
+  line-height: 1;
+  color: var(--bb-cyan-soft);
+}
+
+.buyback-page .progress-track {
+  position: relative;
+  height: 16px;
+  border-radius: 999px;
+  background: #0b1a1f;
+  overflow: visible;
+}
+
+.buyback-page .progress-fill {
+  position: relative;
+  display: block;
+  width: 23.1%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #008ca0, #00f2ff);
+  box-shadow: 0 0 17px rgba(0, 242, 255, 0.28);
+  animation: bb-fill-progress 1100ms ease-out both;
+}
+
+.buyback-page .progress-fill b {
+  position: absolute;
+  top: -22px;
+  right: -17px;
+  color: var(--bb-cyan-soft);
+  font-size: 11px;
+}
+
+.buyback-page .progress-track em {
+  position: absolute;
+  top: 23px;
+  right: 0;
+  color: #6e9ba6;
+  font-size: 10px;
+  font-style: normal;
+}
+
+.buyback-page .panel-note {
+  margin: 38px 0 0;
+  padding: 11px 13px;
+  border-left: 2px solid rgba(130, 163, 171, 0.42);
+  border-radius: 6px;
+  background: rgba(113, 145, 153, 0.07);
+  color: #a6bdc3;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.buyback-page .table-wrap {
+  overflow-x: auto;
+  border-radius: 6px;
+  background: #061116;
+}
+
+.buyback-page table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 12px;
+}
+
+.buyback-page th {
+  padding: 10px 13px;
+  border-bottom: 1px solid rgba(133, 163, 171, 0.18);
+  background: #0b191e;
+  color: #7899a2;
+  font-size: 10px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.buyback-page td {
+  padding: 12px 13px;
+  border-bottom: 1px solid rgba(133, 163, 171, 0.1);
+  color: #c9e5e8;
+  white-space: nowrap;
+}
+
+.buyback-page td:nth-child(2) {
+  color: #a7c6cb;
+}
+
+.buyback-page .status {
+  display: inline-flex;
+  padding: 3px 7px;
+  border-radius: 999px;
+  color: #62f6df;
+  background: rgba(99, 232, 193, 0.09);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.buyback-page .hash-button {
+  border: 0;
+  background: transparent;
+  color: #a7c6cb;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.buyback-page .hash-button:hover {
+  color: var(--bb-cyan-soft);
+}
+
+.buyback-page .mechanism-section,
+.buyback-page .impact-section,
+.buyback-page .outcome-section,
+.buyback-page .community-section {
+  margin-bottom: 42px;
+}
+
+.buyback-page .steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.buyback-page .mechanism-step {
+  display: flex;
+  gap: 12px;
+  padding: 4px;
+}
+
+.buyback-page .mechanism-step b,
+.buyback-page .impact-grid b {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #45636c;
+  border-radius: 50%;
+  color: #b9d2d7;
+  font-size: 12px;
+}
+
+.buyback-page .mechanism-step h3 {
+  margin: 4px 0 5px;
+}
+
+.buyback-page .mechanism-step p {
+  margin: 0;
+  color: var(--bb-muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.buyback-page .mechanism-step--accent b {
+  border-color: var(--bb-cyan);
+  background: var(--bb-cyan);
+  color: #022126;
+}
+
+.buyback-page .periods {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 7px;
+  background: #0b171b;
+}
+
+.buyback-page .period {
+  min-width: 38px;
+  padding: 5px 8px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: #819ca4;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.buyback-page .period:hover,
+.buyback-page .period.is-active {
+  background: var(--bb-cyan);
+  color: #002a30;
+}
+
+.buyback-page .chart-wrap {
+  padding: 12px 8px 0;
+  border-radius: 7px;
+  background: #061116;
+  position: relative;
+  min-height: 250px;
+}
+
+.buyback-page .aia-price-chart {
+  width: 100%;
+  height: 250px;
+}
+
+.buyback-page .aia-price-chart .recharts-cartesian-grid-horizontal line:last-child {
+  display: none;
+}
+
+.buyback-page .aia-chart-tooltip {
+  display: grid;
+  gap: 4px;
+  padding: 10px 12px;
+  border: 1px solid rgba(0, 242, 255, 0.28);
+  border-radius: 8px;
+  background: rgba(6, 17, 22, 0.96);
+  color: #c9e5e8;
+  font-size: 11px;
+}
+
+.buyback-page .aia-chart-tooltip strong {
+  color: var(--bb-cyan-soft);
+  font-size: 13px;
+}
+
+.buyback-page .aia-chart-tooltip em {
+  color: #62f6df;
+  font-style: normal;
+  font-size: 10px;
+}
+
+.buyback-page .chart-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  color: #8eadb6;
+  font-size: 12px;
+}
+
+.buyback-page .chart-state--error {
+  color: #ff8ca0;
+}
+
+.buyback-page .chart-legend {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 12px;
+  color: #92b9c1;
+  font-size: 11px;
+}
+
+.buyback-page .chart-legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.buyback-page .chart-legend strong {
+  margin-left: auto;
+  color: #bfe4e8;
+  font-weight: 500;
+}
+
+.buyback-page .chart-legend b {
+  color: var(--bb-cyan-soft);
+}
+
+.buyback-page .legend-line {
+  width: 18px;
+  height: 2px;
+  background: var(--bb-cyan-soft);
+}
+
+.buyback-page .legend-burn {
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--bb-cyan);
+  border-radius: 50%;
+}
+
+.buyback-page .impact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.buyback-page .impact-grid article {
+  min-height: 140px;
+  padding: 16px;
+}
+
+.buyback-page .impact-grid h3 {
+  margin: 14px 0 6px;
+  color: #eaf7f8;
+}
+
+.buyback-page .impact-grid p {
+  margin: 0;
+  color: var(--bb-muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.buyback-page .flywheel {
+  position: relative;
+  min-height: 340px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.buyback-page .flywheel-ring {
+  width: 190px;
+  height: 190px;
+  border: 1px solid #41636b;
+  border-radius: 50%;
+  box-shadow: inset 0 0 28px rgba(0, 242, 255, 0.045);
+}
+
+.buyback-page .flywheel-core {
+  position: absolute;
+  display: grid;
+  width: 84px;
+  height: 84px;
+  place-content: center;
+  border: 1px solid var(--bb-cyan);
+  border-radius: 50%;
+  background: #061a20;
+  color: #dfffff;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 0 18px rgba(0, 242, 255, 0.17);
+}
+
+.buyback-page .flywheel-core span {
+  color: #8dd8de;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.buyback-page .flywheel-node {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 210px;
+  color: #b8d0d5;
+  font-size: 12px;
+}
+
+.buyback-page .flywheel-node b {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #42646c;
+  border-radius: 50%;
+  background: #071217;
+  color: #b6d0d5;
+  font-size: 11px;
+}
+
+.buyback-page .flywheel-node span {
+  font-weight: 700;
+}
+
+.buyback-page .flywheel-node small {
+  display: block;
+  margin-top: 3px;
+  color: #719da5;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.buyback-page .node-one {
+  top: 20px;
+  left: calc(50% - 105px);
+}
+
+.buyback-page .node-one b {
+  border-color: var(--bb-cyan);
+  color: var(--bb-cyan-soft);
+}
+
+.buyback-page .node-two {
+  top: 144px;
+  left: calc(50% + 150px);
+}
+
+.buyback-page .node-three {
+  bottom: 16px;
+  left: calc(50% - 100px);
+}
+
+.buyback-page .node-four {
+  top: 144px;
+  right: calc(50% + 150px);
+  text-align: right;
+  flex-direction: row-reverse;
+}
+
+.buyback-page .node-four small {
+  text-align: right;
+}
+
+.buyback-page .outcome-section {
+  max-width: 760px;
+}
+
+.buyback-page .outcome-section h2 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.buyback-page .outcome-section p:not(.eyebrow) {
+  margin-bottom: 10px;
+  color: var(--bb-muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.buyback-page .outcome-section strong {
+  color: #d2e5e8;
+  font-size: 14px;
+}
+
+.buyback-page .community-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.buyback-page .community-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 94px;
+  padding: 15px;
+  background: #071216;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.buyback-page .community-card:hover {
+  box-shadow: inset 0 0 0 1px rgba(0, 242, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+.buyback-page .community-card img {
+  width: 35px;
+  height: 35px;
+}
+
+.buyback-page .community-card span {
+  display: grid;
+  gap: 4px;
+}
+
+.buyback-page .community-card b {
+  font-size: 14px;
+}
+
+.buyback-page .community-card small {
+  color: var(--bb-muted);
+  font-size: 11px;
+}
+
+.buyback-page .community-card em {
+  margin-left: auto;
+  padding: 6px 10px;
+  border-radius: 5px;
+  background: var(--bb-cyan);
+  color: #00252a;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+@keyframes bb-fill-progress {
+  from {
+    width: 0;
+  }
+  to {
+    width: 23.1%;
+  }
+}
+
+@media (max-width: 980px) {
+  .buyback-page .metrics-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .buyback-page .steps-grid,
+  .buyback-page .impact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .buyback-page .node-two {
+    left: calc(50% + 95px);
+  }
+
+  .buyback-page .node-four {
+    right: calc(50% + 95px);
+  }
+}
+
+@media (max-width: 760px) {
+  .buyback-page .hero {
+    min-height: calc(520px + 57px);
+    height: calc(520px + 57px);
+    padding-top: 57px;
+  }
+
+  .buyback-page .hero h1 {
+    font-size: 38px;
+  }
+
+  .buyback-page .hero p {
+    font-size: 16px;
+  }
+
+  .buyback-page .tracker-shell {
+    width: min(calc(100% - 32px), 620px);
+    padding-top: 52px;
+  }
+
+  .buyback-page .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .buyback-page .metric-card--burn {
+    grid-column: span 2;
+  }
+
+  .buyback-page .panel {
+    padding: 17px;
+  }
+
+  .buyback-page .progress-summary {
+    gap: 14px;
+  }
+
+  .buyback-page .progress-summary strong {
+    font-size: 17px;
+  }
+
+  .buyback-page .steps-grid,
+  .buyback-page .impact-grid,
+  .buyback-page .community-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .buyback-page .mechanism-section,
+  .buyback-page .impact-section,
+  .buyback-page .outcome-section,
+  .buyback-page .community-section {
+    margin-bottom: 34px;
+  }
+
+  .buyback-page .chart-wrap {
+    grid-template-columns: 42px 1fr;
+  }
+
+  .buyback-page .chart-y-axis {
+    padding-left: 7px;
+  }
+
+  .buyback-page .chart-x-axis span:nth-child(even) {
+    display: none;
+  }
+
+  .buyback-page .periods {
+    gap: 2px;
+  }
+
+  .buyback-page .period {
+    min-width: 33px;
+  }
+
+  .buyback-page .chart-legend {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .buyback-page .chart-legend strong {
+    margin-left: 0;
+  }
+
+  .buyback-page .flywheel {
+    min-height: 480px;
+    transform: scale(0.84);
+    transform-origin: top center;
+    margin-bottom: -64px;
+  }
+
+  .buyback-page .node-one {
+    top: 10px;
+  }
+
+  .buyback-page .node-two {
+    top: 150px;
+    left: calc(50% + 75px);
+  }
+
+  .buyback-page .node-three {
+    bottom: 72px;
+  }
+
+  .buyback-page .node-four {
+    top: 150px;
+    right: calc(50% + 75px);
+  }
+}
+
+@media (max-width: 420px) {
+  .buyback-page .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .buyback-page .metric-card--burn {
+    grid-column: auto;
+  }
+
+  .buyback-page .progress-summary {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .buyback-page .progress-summary div:last-child {
+    grid-column: span 2;
+  }
+
+  .buyback-page .section-heading {
+    gap: 12px;
+  }
+
+  .buyback-page .section-heading h2 {
+    font-size: 20px;
+  }
+
+  .buyback-page .periods {
+    padding: 3px;
+  }
+
+  .buyback-page .period {
+    min-width: 30px;
+    padding-inline: 6px;
+  }
+
+  .buyback-page .flywheel {
+    transform: scale(0.7);
+    margin-inline: -80px;
+  }
+
+  .buyback-page .community-card {
+    align-items: flex-start;
+  }
+
+  .buyback-page .community-card em {
+    display: none;
+  }
+}

@@ -1,0 +1,266 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 26, 26, 26;
+  --background-end-rgb: 26, 26, 26;
+}
+
+/* 修复顶部空白问题 */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #1a1a1a;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* 隐藏滚动条但允许滚动 */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))
+  );
+  min-height: 100vh;
+}
+
+/* 确保所有容器没有顶部边距 */
+#__next, main {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* 首页 hero 视频：禁止被全局圆角/mask 规则裁切或隐藏 */
+video.hero-video {
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+}
+
+/* 非 hero 视频的圆角/mask 兼容 */
+video:not(.hero-video), iframe {
+  border-radius: inherit !important;
+  overflow: hidden !important;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
+}
+
+/* Radix UI Dropdown 位置调整 */
+[data-radix-popper-content-wrapper] {
+  top: 20px !important;
+}
+
+/* 确保所有带有border-radius的容器内的视频也有相同的圆角 */
+.rounded-lg video,
+.rounded-md video,
+.rounded-sm video,
+.rounded video,
+.rounded-full video,
+[class*="rounded-"] video:not(.hero-video),
+[style*="border-radius"] video:not(.hero-video) {
+  border-radius: inherit !important;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
+}
+
+/* 同样适用于iframe */
+.rounded-lg iframe,
+.rounded-md iframe,
+.rounded-sm iframe,
+.rounded iframe,
+.rounded-full iframe,
+[class*="rounded-"] iframe,
+[style*="border-radius"] iframe {
+  border-radius: inherit !important;
+  -webkit-mask-image: -webkit-radial-gradient(white, black); /* Safari fix */
+  mask-image: radial-gradient(white, black); /* 标准语法 */
+}
+
+/* 确保圆角容器正确显示圆角 */
+.rounded-t-2xl,
+.rounded-t-xl,
+.rounded-t-lg,
+.rounded-t-md,
+.rounded-t-sm,
+.rounded-b-2xl,
+.rounded-b-xl,
+.rounded-b-lg,
+.rounded-b-md,
+.rounded-b-sm,
+.rounded-2xl,
+.rounded-xl,
+.rounded-lg,
+.rounded-md,
+.rounded-sm,
+.rounded-full,
+.rounded,
+[class*="rounded-"] {
+  overflow: hidden !important;
+  position: relative !important;
+  z-index: 1 !important;
+  -webkit-mask-image: -webkit-radial-gradient(white, black) !important; /* Safari fix */
+  mask-image: radial-gradient(white, black) !important; /* 标准语法 */
+  isolation: isolate !important; /* 创建新的层叠上下文 */
+}
+
+/* 确保绝对定位元素不会覆盖圆角 */
+.rounded-t-2xl > .absolute,
+.rounded-t-xl > .absolute,
+.rounded-t-lg > .absolute,
+.rounded-t-md > .absolute,
+.rounded-t-sm > .absolute,
+.rounded-b-2xl > .absolute,
+.rounded-b-xl > .absolute,
+.rounded-b-lg > .absolute,
+.rounded-b-md > .absolute,
+.rounded-b-sm > .absolute,
+.rounded-2xl > .absolute,
+.rounded-xl > .absolute,
+.rounded-lg > .absolute,
+.rounded-md > .absolute,
+.rounded-sm > .absolute,
+.rounded-full > .absolute,
+.rounded > .absolute,
+[class*="rounded-"] > .absolute {
+  border-radius: inherit !important;
+  overflow: hidden !important;
+}
+
+/* 特别处理视频容器 */
+.video-container {
+  overflow: hidden !important;
+  border-radius: inherit !important;
+  -webkit-mask-image: -webkit-radial-gradient(white, black) !important;
+  mask-image: radial-gradient(white, black) !important;
+}
+
+.clip-triangle {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* 发光文字效果 */
+.text-glow {
+  text-shadow: 0 0 20px rgba(120, 231, 251, 0.5);
+}
+
+/* 平滑滚动 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 渐变背景动画 */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient 15s ease infinite;
+  background-size: 200% 200%;
+}
+
+/* 渐隐渐现动画（箭头提示用） */
+@keyframes fade-blink {
+  0%, 100% { opacity: 0; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(4px); }
+}
+
+.animate-fade-blink {
+  animation: fade-blink 1.6s ease-in-out infinite;
+}
+
+/* 玻璃态模糊效果 */
+.glass-effect {
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* 悬停发光效果 */
+.hover-glow {
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  filter: drop-shadow(0 0 8px rgba(120, 231, 251, 0.6));
+}
+
+/* 文字渐变效果 */
+.text-gradient {
+  background: linear-gradient(90deg, #78E7FB 0%, #00D5DA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 动画过渡效果 */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(120, 231, 251, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(120, 231, 251, 0.5);
+}
+
+/* 隐藏滚动条但保持滚动功能 */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}

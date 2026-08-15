@@ -1,0 +1,260 @@
+.sentry-dashboard {
+  align-items: stretch;
+}
+.sentry-matches-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.sentry-table-wrap {
+  flex: 1 1 auto;
+  min-height: 560px;
+  max-height: 640px;
+  overflow: auto;
+}
+@media (max-width: 860px) {
+  .sentry-table-wrap {
+    min-height: 360px;
+    max-height: 480px;
+  }
+}
+.sentry-table-wrap th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.sentry-table-wrap tbody > tr > td:first-child {
+  display: table-cell;
+  color: #fff;
+}
+
+.sentry-table-wrap tbody > tr > td:first-child b {
+  margin-right: 7px;
+}
+
+.sentry-table-wrap tbody > tr > td.up {
+  color: #74bda8;
+}
+
+.sentry-table-wrap tbody > tr > td.down {
+  color: #ce8383;
+}
+
+.agents-kpi .count-up-number {
+  display: inline;
+  margin: 0;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+.agents-kpi .count-up-unit {
+  color: #8fe9ee;
+  font: inherit;
+  font-size: .48em;
+  letter-spacing: -.03em;
+}
+
+/* PixelBlast replaces only the AI Agents hero's previous dot-field background. */
+.agents-hero {
+  background: #101011;
+}
+
+.agents-pixel-blast {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+}
+
+.agents-hero-inner {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.agents-hero-inner a,
+.agents-hero-inner button,
+.agents-hero-inner input {
+  pointer-events: auto;
+}
+
+/* Unified AI Agents list and card surface color. */
+.agents-page {
+  --panel: #0b0c0d;
+}
+
+.sentry-filter-panel,
+.sentry-matches-panel,
+.daily-push-card,
+.comparison-grid article,
+.credit-table,
+.memory-grid article,
+.deploy-layout pre {
+  background: #0b0c0d;
+}
+
+.comparison-agent {
+  background: linear-gradient(135deg, #002528, #0b0c0d) !important;
+}
+
+/* Desktop geometry follows the 1470 × 5929 Figma frame. */
+@media (min-width: 861px) {
+  .agents-page .site-header {
+    height: 98px;
+    padding: 20px 32px 0;
+  }
+
+  .agents-page .site-nav {
+    min-height: 78px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+
+  .agents-hero {
+    height: 817px;
+    min-height: 817px;
+  }
+
+  .agents-sentry {
+    height: auto;
+    min-height: 986px;
+    margin: 52px auto 0;
+    padding: 0 0 52px;
+    overflow: visible;
+  }
+
+  .daily-push-card {
+    width: min(1216px, calc(100% - 48px));
+    height: auto;
+    min-height: 504px;
+    margin: 48px auto 0;
+    padding: 40px 35px;
+    gap: 48px;
+    border: 1px solid #1c1c20;
+    border-radius: 12px;
+  }
+
+  .agents-comparison {
+    height: auto;
+    min-height: 660px;
+    margin: 72px auto 0;
+    padding: 72px 0;
+    overflow: visible;
+  }
+
+  .agents-credit {
+    height: auto;
+    min-height: 578px;
+    margin: 0 auto;
+    padding: 110px 0;
+    overflow: visible;
+  }
+
+  .agents-memory {
+    height: auto;
+    min-height: 660px;
+    margin: 0 auto;
+    padding: 110px 0;
+    overflow: visible;
+  }
+
+  .agents-deploy {
+    height: auto;
+    min-height: 700px;
+    margin: 0 auto;
+    padding: 110px 0;
+    overflow: visible;
+  }
+
+  .agents-waitlist {
+    height: 400px;
+    min-height: 400px;
+    margin-top: 72px;
+    padding: 124px 24px 0;
+  }
+
+  .agents-footer {
+    height: 419px;
+    padding-top: 90px;
+    overflow: hidden;
+  }
+}
+
+.sentry-outlier {
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+  background: transparent;
+}
+.sentry-outlier > i {
+  position: relative;
+  flex: 0 0 auto;
+  width: 42px;
+  height: 23px;
+  border-radius: 999px;
+  background: var(--cyan);
+  transition: background-color .18s ease;
+}
+.sentry-outlier > i:after {
+  position: absolute;
+  top: 2px;
+  left: 21px;
+  display: block;
+  width: 19px;
+  height: 19px;
+  margin: 0;
+  border-radius: 50%;
+  background: #fff;
+  content: '';
+  transition: left .18s ease;
+}
+.sentry-outlier.is-off > i {
+  background: #36363b;
+}
+.sentry-outlier.is-off > i:after {
+  left: 2px;
+}
+.sentry-status {
+  margin: 8px 0 0;
+  color: #a3a3a8;
+  font-size: 12px;
+}
+.waitlist-status {
+  margin: 14px auto 0;
+  width: min(520px, 100%);
+  font-size: 13px;
+}
+.waitlist-status.is-ok { color: #74bda8; }
+.waitlist-status.is-error { color: #ce8383; }
+
+.sentry-skeleton-row td {
+  height: 44px;
+  vertical-align: middle;
+}
+.sentry-skeleton {
+  display: block;
+  width: 72%;
+  height: 12px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #1a1a1f 0%, #2a2a32 45%, #1a1a1f 100%);
+  background-size: 220% 100%;
+  animation: sentry-skeleton-shimmer 1.15s ease-in-out infinite;
+}
+.sentry-skeleton--market {
+  width: 88%;
+  height: 16px;
+}
+.sentry-skeleton-row:nth-child(odd) .sentry-skeleton {
+  animation-delay: .12s;
+}
+.sentry-skeleton-row:nth-child(3n) .sentry-skeleton {
+  width: 54%;
+}
+@keyframes sentry-skeleton-shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sentry-skeleton { animation: none; }
+}

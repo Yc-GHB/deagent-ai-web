@@ -56,8 +56,7 @@ export default function CaseStudiesPage() {
         />
         <div className="case-container case-hero-content">
           <header className="case-page-header">
-            <h1 id="case-page-title">{caseStudies.hero.title}</h1>
-            <p>{caseStudies.hero.intro}</p>
+            <h1 id="case-page-title">{caseStudies.hero.intro}</h1>
           </header>
 
           <article className="case-feature-card">

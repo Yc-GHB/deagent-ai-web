@@ -95,7 +95,6 @@ function NavigationFlyout({
                 {item.title}
                 {item.external && <ArrowUpRight size={15} strokeWidth={1.5} />}
               </strong>
-              {item.description && <span>{item.description}</span>}
             </SiteLink>
           ))}
         </section>

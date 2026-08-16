@@ -74,7 +74,7 @@ export const ko: LocaleMessages = {
                 href: "/solutions",
               },
               {
-                title: "사례 연구",
+                title: "통합",
                 description: "AliceAI 및 파트너",
                 href: "/case-studies",
               },
@@ -142,7 +142,7 @@ export const ko: LocaleMessages = {
       links: [
         { label: "AI Agents", badge: "NEW", href: "/agents" },
         { label: "AlphaX", href: "/alphax" },
-        { label: "AliceAI", href: "/case-studies" },
+        { label: "CorrAI", href: "https://corr.ai/en" },
         { label: "AI Token Hub", href: "/token-hub" },
       ],
     },
@@ -915,18 +915,17 @@ export const ko: LocaleMessages = {
     },
     traction: {
       title: "실제 커뮤니티 트랙션",
-      disclaimer: "수치는 실제 통계를 따릅니다 — 게시 전 확인하세요.",
       stats: [
         {
-          valueSuffix: "k+",
-          value: 30,
-          title: "일일 토론",
-          footnote: "온라인 · AliceAI 경유",
+          valueSuffix: "+",
+          value: 10,
+          title: "개국",
+          footnote: "",
         },
         {
-          value: "Hong Kong · Shenzhen · Xi'an",
-          title: "오프라인 이벤트 도시",
-          footnote: "W3Labs × Jisit Future",
+          value: "W3Labs",
+          title: "DeAgentAI 생태계 펀드가 인큐베이팅한 오프라인 커뮤니티 브랜드",
+          footnote: "",
         },
         {
           value: "다수",

@@ -74,7 +74,7 @@ export const ja: LocaleMessages = {
                 href: '/solutions',
               },
               {
-                title: 'ケーススタディ',
+                title: 'インテグレーション',
                 description: 'AliceAI とパートナー',
                 href: '/case-studies',
               },
@@ -142,7 +142,7 @@ export const ja: LocaleMessages = {
       links: [
         { label: 'AI Agents', badge: 'NEW', href: '/agents' },
         { label: 'AlphaX', href: '/alphax' },
-        { label: 'AliceAI', href: '/case-studies' },
+        { label: 'CorrAI', href: 'https://corr.ai/en' },
         { label: 'AI Token Hub', href: '/token-hub' },
       ],
     },
@@ -932,18 +932,17 @@ export const ja: LocaleMessages = {
     },
     traction: {
       title: '実際のコミュニティトラクション',
-      disclaimer: '数値は実統計に基づきます。公開前に検証してください。',
       stats: [
         {
-          valueSuffix: 'k+',
-          value: 30,
-          title: '日次ディスカッション',
-          footnote: 'オンライン · AliceAI 経由',
+          valueSuffix: '+',
+          value: 10,
+          title: 'カ国',
+          footnote: '',
         },
         {
-          value: "Hong Kong · Shenzhen · Xi'an",
-          title: 'オフライン開催都市',
-          footnote: 'W3Labs × Jisit Future',
+          value: 'W3Labs',
+          title: 'DeAgentAI エコシステムファンドが孵化したオフラインコミュニティブランド',
+          footnote: '',
         },
         {
           value: '複数回',

@@ -93,7 +93,6 @@ export default function CommunityPage() {
         <div className="community-container">
           <header className="community-section-header">
             <h2 id="traction-title">{community.traction.title}</h2>
-            <p>{community.traction.disclaimer}</p>
           </header>
           <div className="community-stats-grid">
             {community.traction.stats.map((stat: CommunityMessages['traction']['stats'][number], index: number) => (
@@ -109,7 +108,7 @@ export default function CommunityPage() {
                   )}
                 </strong>
                 <h3>{stat.title}</h3>
-                <p>{stat.footnote}</p>
+                {stat.footnote ? <p>{stat.footnote}</p> : null}
               </article>
             ))}
           </div>
@@ -123,7 +122,6 @@ export default function CommunityPage() {
             <DomeGallery
               images={galleryImages}
               overlayBlurColor="#1a1a1a"
-              grayscale
               imageBorderRadius="18px"
             />
           </div>

@@ -23,11 +23,11 @@
 .community-section-header h2, .community-snapshots h2, .community-conversation-copy h2, .community-ambassador h2, .community-blogs h2 { margin-bottom: 0; font-size: 40px; font-weight: 700; line-height: 48px; letter-spacing: -.02em; }
 .community-section-header p { margin-bottom: 0; color: #a1a1aa; font-size: 15px; line-height: 24px; }
 .community-stats-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 24px; }
-.community-stats-grid article { height: 159px; padding: 34px; border: 1px solid #1c1c20; border-radius: 16px; background: #080809; }
+.community-stats-grid article { min-height: 159px; height: auto; padding: 34px; border: 1px solid #1c1c20; border-radius: 16px; background: #080809; }
 .community-stats-grid strong { display: block; margin-bottom: 8px; font-size: 32px; line-height: 40px; }
 .community-stats-grid article:first-child strong { background: linear-gradient(90deg, #fff, #2ce0ea); background-clip: text; color: transparent; }
-.community-stats-grid .community-city-value { font-size: 24px; white-space: nowrap; }
-.community-stats-grid h3 { margin-bottom: 8px; font-size: 14px; font-weight: 600; line-height: 17px; }
+.community-stats-grid .community-city-value { font-size: 32px; white-space: normal; }
+.community-stats-grid h3 { margin-bottom: 8px; font-size: 14px; font-weight: 600; line-height: 22px; }
 .community-stats-grid p { margin-bottom: 0; color: #6b6b73; font-size: 12px; line-height: 18px; }
 
 .community-snapshots { height: 860px; padding-top: 72px; border-top: 1px solid #141417; text-align: center; }
@@ -75,7 +75,7 @@
   .community-hero h1 { font-size: clamp(40px, 12vw, 52px); line-height: 1.08; }
   .community-stats, .community-snapshots, .community-conversations, .community-ambassador, .community-blogs { height: auto; padding: 64px 0; }
   .community-stats-grid, .community-channel-grid, .community-blog-grid { grid-template-columns: 1fr; }
-  .community-stats-grid .community-city-value { font-size: clamp(18px, 5vw, 24px); white-space: normal; }
+  .community-stats-grid .community-city-value { font-size: 32px; white-space: normal; }
   .community-snapshots { padding-bottom: 0; }
   .community-snapshot-gallery { width: calc(100vw - 12px); height: min(620px, 76vh); margin-top: 20px; border-radius: 24px; }
   .community-conversation-layout { grid-template-columns: 1fr; gap: 36px; }

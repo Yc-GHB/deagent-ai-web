@@ -48,9 +48,8 @@
 
 .case-hero-content { position: relative; z-index: 1; padding-top: 26px; }
 
-.case-page-header { height: 116px; }
-.case-page-header h1 { margin-bottom: 12px; font-size: 56px; font-weight: 600; line-height: 68px; letter-spacing: -1.4px; }
-.case-page-header p { max-width: 760px; margin-bottom: 0; color: #a1a1aa; font-size: 15px; line-height: 18px; }
+.case-page-header { height: auto; max-width: 920px; }
+.case-page-header h1 { margin-bottom: 0; color: #fff; font-size: 28px; font-weight: 700; line-height: 38px; letter-spacing: -.02em; }
 
 .case-feature-card {
   height: 372px;
@@ -132,8 +131,7 @@
   .case-hero { height: auto; min-height: 760px; margin-top: 84px; }
   .case-hero-content { padding: 44px 0 64px; }
   .case-page-header { height: auto; }
-  .case-page-header h1 { font-size: clamp(42px, 12vw, 56px); line-height: 1.05; }
-  .case-page-header p { line-height: 22px; }
+  .case-page-header h1 { font-size: clamp(22px, 5vw, 28px); line-height: 1.35; }
   .case-feature-card { height: auto; margin-top: 36px; padding: 28px; }
   .case-feature-card h2 { font-size: 32px; line-height: 1.1; }
   .case-feature-card > p { line-height: 22px; }

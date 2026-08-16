@@ -25,14 +25,29 @@ export function SiteFooter() {
         </div>
         <div className='footer-products'>
           <h3>{footer.products.title}</h3>
-          {footer.products.links.map(link => (
-            <Link key={`${link.href}-${link.label}`} href={link.href} prefetch>
-              {link.label}
-              {'badge' in link && link.badge ? (
-                <img className='footer-new-badge' src='/images/home/badge-new.svg' alt={link.badge} />
-              ) : null}
-            </Link>
-          ))}
+          {footer.products.links.map(link => {
+            const isExternal = link.href.startsWith('http')
+            const content = (
+              <>
+                {link.label}
+                {'badge' in link && link.badge ? (
+                  <img className='footer-new-badge' src='/images/home/badge-new.svg' alt={link.badge} />
+                ) : null}
+              </>
+            )
+            if (isExternal) {
+              return (
+                <a key={`${link.href}-${link.label}`} href={link.href} target='_blank' rel='noreferrer'>
+                  {content}
+                </a>
+              )
+            }
+            return (
+              <Link key={`${link.href}-${link.label}`} href={link.href} prefetch>
+                {content}
+              </Link>
+            )
+          })}
         </div>
         <div className='footer-community'>
           <h3>{footer.community.title}</h3>

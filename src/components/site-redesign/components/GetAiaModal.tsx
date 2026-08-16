@@ -12,10 +12,12 @@ interface ExchangeOption {
   readonly href: string
 }
 
-/** CEX 现货入口：Bitget / 抹茶(MEXC) */
+/** CEX 入口：Bitget / MEXC / Binance Alpha / Gate */
 const CEX_EXCHANGES: readonly ExchangeOption[] = [
+  { id: 'binance-alpha', name: 'Binance Alpha', href: 'https://www.binance.com/en/alpha/bsc/0x53ec33cd4fa46b9eced9ca3f6db626c5ffcd55cc' },
   { id: 'bitget', name: 'Bitget', href: 'https://www.bitget.com/spot/AIAUSDT' },
   { id: 'mexc', name: 'MEXC', href: 'https://www.mexc.com/exchange/AIA_USDT' },
+  { id: 'gate', name: 'Gate', href: 'https://www.gate.com/trade/AIA_USDT' },
 ] as const
 
 interface GetAiaModalProps {
@@ -24,7 +26,7 @@ interface GetAiaModalProps {
 }
 
 /**
- * GET $AIA 弹窗：引导用户通过 Bitget / 抹茶交易。
+ * GET $AIA 弹窗：引导用户通过 CEX 交易。
  */
 export default function GetAiaModal({ open, onClose }: GetAiaModalProps) {
   const { messages } = useI18n()

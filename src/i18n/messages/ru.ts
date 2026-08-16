@@ -74,7 +74,7 @@ export const ru: LocaleMessages = {
                 href: "/solutions",
               },
               {
-                title: "Кейсы",
+                title: "Интеграции",
                 description: "AliceAI и партнёры",
                 href: "/case-studies",
               },
@@ -142,7 +142,7 @@ export const ru: LocaleMessages = {
       links: [
         { label: "AI Agents", badge: "NEW", href: "/agents" },
         { label: "AlphaX", href: "/alphax" },
-        { label: "AliceAI", href: "/case-studies" },
+        { label: "CorrAI", href: "https://corr.ai/en" },
         { label: "AI Token Hub", href: "/token-hub" },
       ],
     },
@@ -940,19 +940,17 @@ export const ru: LocaleMessages = {
     },
     traction: {
       title: "Реальный трекшн сообщества",
-      disclaimer:
-        "Цифры зависят от реальной статистики — проверьте перед публикацией.",
       stats: [
         {
-          valueSuffix: "k+",
-          value: 30,
-          title: "Ежедневные обсуждения",
-          footnote: "Онлайн · через AliceAI",
+          valueSuffix: "+",
+          value: 10,
+          title: "стран",
+          footnote: "",
         },
         {
-          value: "Hong Kong · Shenzhen · Xi'an",
-          title: "Города офлайн-событий",
-          footnote: "W3Labs × Jisit Future",
+          value: "W3Labs",
+          title: "Офлайн-бренд сообщества, инкубированный фондом экосистемы DeAgentAI",
+          footnote: "",
         },
         {
           value: "Несколько",

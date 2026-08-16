@@ -72,7 +72,7 @@ export const en = {
                 href: "/solutions",
               },
               {
-                title: "Case Studies",
+                title: "Integrations",
                 description: "AliceAI & partners",
                 href: "/case-studies",
               },
@@ -140,7 +140,7 @@ export const en = {
       links: [
         { label: "AI Agents", badge: "NEW", href: "/agents" },
         { label: "AlphaX", href: "/alphax" },
-        { label: "AliceAI", href: "/case-studies" },
+        { label: "CorrAI", href: "https://corr.ai/en" },
         { label: "AI Token Hub", href: "/token-hub" },
       ],
     },
@@ -934,18 +934,17 @@ export const en = {
     },
     traction: {
       title: "Real community traction",
-      disclaimer: "Figures subject to real stats - verify before publishing.",
       stats: [
         {
-          valueSuffix: "k+",
-          value: 30,
-          title: "Daily discussions",
-          footnote: "Online · via AliceAI",
+          valueSuffix: "+",
+          value: 10,
+          title: "Countries",
+          footnote: "",
         },
         {
-          value: "Hong Kong · Shenzhen · Xi'an",
-          title: "Offline event cities",
-          footnote: "W3Labs × Jisit Future",
+          value: "W3Labs",
+          title: "Offline community brand incubated by the DeAgentAI Ecosystem Fund",
+          footnote: "",
         },
         {
           value: "Multiple",

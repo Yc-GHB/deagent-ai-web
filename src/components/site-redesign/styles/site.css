@@ -111,11 +111,10 @@ a { color: inherit; text-decoration: none; }
 .nav-flyout--wide { grid-template-columns: repeat(2, minmax(250px, 1fr)); width: 760px; }
 .nav-flyout-group { min-width: 0; }
 .nav-flyout-group h3 { margin: 0 0 25px; color: rgba(255,255,255,.45); font-size: 11px; font-weight: 600; letter-spacing: 2px; line-height: 1; text-transform: uppercase; }
-.nav-flyout-link { display: grid; gap: 7px; margin-top: 26px; color: #fff; }
+.nav-flyout-link { display: block; margin-top: 26px; color: #fff; }
 .nav-flyout-link:first-of-type { margin-top: 0; }
 .nav-flyout-link strong { display: inline-flex; align-items: center; gap: 7px; font-size: 19px; font-weight: 500; line-height: 1.15; transition: color .18s ease; }
-.nav-flyout-link span { color: rgba(255,255,255,.44); font-size: 14px; line-height: 1.3; transition: color .18s ease; }
-.nav-flyout-link:hover strong, .nav-flyout-link:hover span { color: #00ccd6; }
+.nav-flyout-link:hover strong { color: #00ccd6; }
 @keyframes nav-flyout-in { from { opacity: 0; transform: translateX(-50%) translateY(-8px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
 .nav-actions { display: flex; align-items: center; gap: 24px; grid-column: 3; justify-self: end; margin: 0; }
 .language-switcher { position: relative; }

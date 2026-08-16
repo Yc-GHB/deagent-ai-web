@@ -74,7 +74,7 @@ export const zhCN: LocaleMessages = {
                 href: "/solutions",
               },
               {
-                title: "案例研究",
+                title: "集成",
                 description: "AliceAI 与合作伙伴",
                 href: "/case-studies",
               },
@@ -138,7 +138,7 @@ export const zhCN: LocaleMessages = {
       links: [
         { label: "AI Agents", badge: "NEW", href: "/agents" },
         { label: "AlphaX", href: "/alphax" },
-        { label: "AliceAI", href: "/case-studies" },
+        { label: "CorrAI", href: "https://corr.ai/en" },
         { label: "AI Token Hub", href: "/token-hub" },
       ],
     },
@@ -849,18 +849,17 @@ export const zhCN: LocaleMessages = {
     },
     traction: {
       title: "真实的社区势能",
-      disclaimer: "数字以真实统计为准——发布前请核实。",
       stats: [
         {
-          valueSuffix: "k+",
-          value: 30,
-          title: "每日讨论",
-          footnote: "线上 · 经由 AliceAI",
+          valueSuffix: "+",
+          value: 10,
+          title: "国家",
+          footnote: "",
         },
         {
-          value: "香港 · 深圳 · 西安",
-          title: "线下活动城市",
-          footnote: "W3Labs × Jisit Future",
+          value: "W3Labs",
+          title: "DeAgentAI生态基金孵化的线下社团品牌",
+          footnote: "",
         },
         {
           value: "多场",

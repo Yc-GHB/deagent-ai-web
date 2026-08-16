@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type ReactNode, type MouseEvent } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ArrowUpRight, ChevronDown, Globe2, Menu, X } from 'lucide-react'
+import { ArrowUpRight, ChevronDown, Globe, Menu, X } from 'lucide-react'
 import { useI18n } from '@/i18n/I18nProvider'
 import { LOCALE_META, type Locale } from '@/i18n/locales'
 import GetAiaModal, { isGetAiaHref } from './GetAiaModal'
@@ -143,7 +143,7 @@ function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
         aria-expanded={isOpen}
         onClick={() => setIsOpen(open => !open)}
       >
-        <Globe2 size={16} />
+        <Globe size={16} strokeWidth={1.6} />
         <span>{messages.nav.languageShort || current.short}</span>
         <ChevronDown size={10} />
       </button>

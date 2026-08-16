@@ -30,16 +30,9 @@
 .community-stats-grid h3 { margin-bottom: 8px; font-size: 14px; font-weight: 600; line-height: 17px; }
 .community-stats-grid p { margin-bottom: 0; color: #6b6b73; font-size: 12px; line-height: 18px; }
 
-.community-snapshots { height: 940px; padding-top: 72px; border-top: 1px solid #141417; text-align: center; }
-.community-snapshots h2 { margin-bottom: 8px; }
-.community-gallery-status { margin-bottom: 20px; color: #6b6b73; font-family: 'Geist Mono', monospace; font-size: 11px; line-height: 18px; letter-spacing: .08em; text-transform: uppercase; }
-.community-tabs { display: flex; align-items: center; justify-content: center; gap: 12px; }
-.community-tabs button { padding: 9px 16px; border: 1px solid #1c1c20; border-radius: 999px; background: #080809; color: #8a8f98; font-size: 13px; font-weight: 600; cursor: pointer; transition: background-color .18s ease, color .18s ease, border-color .18s ease; }
-.community-year-tabs button.is-active { border-color: #2ce0ea; background: #2ce0ea; color: #000; font-weight: 700; }
-.community-city-tabs { margin-top: 24px; }
-.community-city-tabs button { padding: 7px 14px; font-size: 12px; }
-.community-city-tabs button.is-active { background: #0c0c10; color: #fff; }
-.community-snapshot-gallery { position: relative; width: min(1260px, calc(100vw - 32px)); height: 610px; margin: 22px 50% 0; transform: translateX(-50%); overflow: hidden; border-radius: 38px; background: #1a1a1a; }
+.community-snapshots { height: 860px; padding-top: 72px; border-top: 1px solid #141417; text-align: center; }
+.community-snapshots h2 { margin-bottom: 28px; }
+.community-snapshot-gallery { position: relative; width: min(1260px, calc(100vw - 32px)); height: 610px; margin: 0 50% 0; transform: translateX(-50%); overflow: hidden; border-radius: 38px; background: #1a1a1a; }
 
 .community-conversations { height: 464px; padding-top: 80px; border-top: 1px solid #141417; }
 .community-conversation-layout { display: grid; grid-template-columns: 620px 1fr; gap: 50px; align-items: center; }
@@ -66,8 +59,10 @@
 .community-blogs { height: 628px; padding-top: 80px; border-top: 1px solid #141417; text-align: center; }
 .community-blogs h2 { margin-bottom: 24px; }
 .community-blog-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; text-align: left; }
-.community-blog-grid article { height: 320px; overflow: hidden; border: 1px solid #1c1c20; border-radius: 14px; background: #080809; }
-.community-blog-image { display: grid; height: 180px; place-items: center; background: linear-gradient(#101010, #0b0c10); color: #6b6b73; font-size: 13px; }
+.community-blog-card { display: block; height: 320px; overflow: hidden; border: 1px solid #1c1c20; border-radius: 14px; background: #080809; color: inherit; text-decoration: none; transition: border-color .18s ease, transform .18s ease; }
+.community-blog-card:hover { border-color: #2ce0ea; transform: translateY(-2px); }
+.community-blog-image { height: 180px; overflow: hidden; background: #0b0c10; }
+.community-blog-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .community-blog-copy { padding: 20px; }
 .community-blog-copy > span { display: block; margin-bottom: 8px; color: #6b6b73; font-size: 11px; font-weight: 600; }
 .community-blog-copy h3 { margin-bottom: 0; font-size: 15px; line-height: 22px; }
@@ -83,13 +78,12 @@
   .community-stats-grid .community-city-value { font-size: clamp(18px, 5vw, 24px); white-space: normal; }
   .community-snapshots { padding-bottom: 0; }
   .community-snapshot-gallery { width: calc(100vw - 12px); height: min(620px, 76vh); margin-top: 20px; border-radius: 24px; }
-  .community-city-tabs { flex-wrap: wrap; }
   .community-conversation-layout { grid-template-columns: 1fr; gap: 36px; }
   .community-ambassador-card { height: auto; padding: 24px; grid-template-columns: 1fr; }
   .community-ambassador-card > img { width: 100%; height: auto; aspect-ratio: 361 / 451; }
-  .community-blog-grid article { height: 300px; }
+  .community-blog-card { height: 300px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .community-social-row a, .community-channel-card, .community-tabs button { transition: none; }
+  .community-social-row a, .community-channel-card, .community-blog-card { transition: none; }
 }

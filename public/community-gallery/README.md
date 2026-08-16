@@ -1,21 +1,5 @@
 # Community gallery assets
 
-Keep every photo inside a year and region folder:
+Place photos directly in this folder. Supported formats: `.jpg`, `.jpeg`, `.png`, `.webp`, `.avif`.
 
-```text
-community-gallery/
-  2024/
-    shenzhen-ai-meetup/
-    hong-kong/
-    xian/
-  2025/
-    shenzhen-ai-meetup/
-    hong-kong/
-    xian/
-  2026/
-    shenzhen-ai-meetup/
-    hong-kong/
-    xian/
-```
-
-Supported formats are `.jpg`, `.jpeg`, `.png`, `.webp`, and `.avif`. New files placed in these folders are discovered automatically by the page during the Vite build; no import list needs to be edited.
+Rename new files to `community-NN.jpg` in sequence (currently `community-01.jpg` … `community-17.jpg`) and bump `GALLERY_COUNT` in `src/components/site-redesign/pages/CommunityPage.tsx`.

@@ -11,6 +11,12 @@ const RESULT_IMAGES = [
   '/figma-assets/case-result-buzz.png',
 ] as const
 
+const PRODUCT_IMAGES = [
+  '/aliceAI/alice_1.png',
+  '/aliceAI/alice_2.png',
+  '/aliceAI/alice_3.png',
+] as const
+
 function BulletCard({ label, title, items, tone }: { label: string; title: string; items: readonly string[]; tone: 'gold' | 'cyan' }) {
   return (
     <article className={`case-bullet-card case-bullet-card--${tone}`}>
@@ -119,12 +125,13 @@ export default function CaseStudiesPage() {
         <div className="case-container">
           <header className="case-section-header">
             <h2 id="results-title">{caseStudies.results.title}</h2>
-            <p>{caseStudies.results.intro}</p>
           </header>
           <div className="case-results-grid">
             {results.map((item, index) => (
               <article className={`case-result-card case-result-card--${index + 1}`} key={item.label}>
-                <strong>{item.number}</strong><span>{item.label}</span><small>{item.sublabel}</small>
+                <strong>{item.number}</strong>
+                <span>{item.label}</span>
+                {item.sublabel ? <small>{item.sublabel}</small> : null}
                 <img src={item.image} alt="" />
               </article>
             ))}
@@ -136,10 +143,13 @@ export default function CaseStudiesPage() {
         <div className="case-container">
           <h2 id="product-title">{caseStudies.product.title}</h2>
           <div className="case-product-grid">
-            {productScreens.map((screen) => (
+            {productScreens.map((screen, index) => (
               <article className="case-product-card" key={screen.badge}>
-                <div className="case-screen-placeholder" aria-hidden="true"><span>{caseStudies.product.brandBadge}</span></div>
-                <div className="case-product-meta"><span>{screen.badge}</span><h3>{screen.title}</h3><p>{screen.subtitle}</p></div>
+                <img src={PRODUCT_IMAGES[index] ?? PRODUCT_IMAGES[0]} alt="" />
+                <div className="case-product-meta">
+                  <span>{screen.badge}</span>
+                  <h3>{screen.title}</h3>
+                </div>
               </article>
             ))}
           </div>

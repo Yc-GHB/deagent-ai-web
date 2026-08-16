@@ -1,16 +1,18 @@
 'use client'
 
-import { useMemo, useState } from 'react'
 import { MessageCircle, Send } from 'lucide-react'
 import { useI18n } from '@/i18n/I18nProvider'
 import type { Messages } from '@/i18n/messages/types'
 import CountUp from '../components/CountUp'
-import DomeGallery, { type DomeGalleryImage } from '../components/DomeGallery'
+import DomeGallery from '../components/DomeGallery'
 import Prism from '../components/Prism'
 import './CommunityPage.css'
 
-/** 稳定文件夹键，与文案城市标签按索引对齐 */
-const CITY_FOLDERS = ['shenzhen-ai-meetup', 'hong-kong', 'xian'] as const
+const GALLERY_COUNT = 17
+const GALLERY_IMAGES = Array.from({ length: GALLERY_COUNT }, (_, index) => ({
+  src: `/community-gallery/community-${String(index + 1).padStart(2, '0')}.jpg`,
+  alt: '',
+}))
 
 const SOCIAL_ICONS = [
   '/images/social-x.svg',
@@ -33,11 +35,14 @@ const CHANNEL_HREFS = [
   'https://discord.com/invite/officialdeagentai',
 ] as const
 
+const BLOG_COVERS = [
+  '/community-blogs/blog-01.png',
+  '/community-blogs/blog-02.png',
+  '/community-blogs/blog-03.png',
+  '/community-blogs/blog-04.png',
+] as const
+
 type CommunityMessages = Messages['community']
-type GalleryPhoto = DomeGalleryImage & {
-  year: string
-  cityIndex: number
-}
 
 function CornerButton({ label }: { label: string }) {
   return (
@@ -52,27 +57,10 @@ function CornerButton({ label }: { label: string }) {
 export default function CommunityPage() {
   const { messages } = useI18n()
   const community = messages.community as CommunityMessages
-  const years: CommunityMessages['snapshots']['years'] = community.snapshots.years
-  const cityLabels: CommunityMessages['snapshots']['cities'] = community.snapshots.cities
-  const [year, setYear] = useState<string | null>(null)
-
-  const galleryPhotos = useMemo((): GalleryPhoto[] => (
-    years.flatMap((photoYear: string) =>
-      CITY_FOLDERS.map((folder, index) => ({
-        src: `/community-gallery/${photoYear}/${folder}/example-01.jpeg`,
-        year: photoYear,
-        cityIndex: index,
-        alt: community.snapshots.photoAltTemplate.replace('{city}', cityLabels[index] ?? ''),
-      })),
-    )
-  ), [cityLabels, community.snapshots.photoAltTemplate, years])
-
-  const visiblePhotos = useMemo(
-    () => galleryPhotos.filter((photo: GalleryPhoto) => !year || photo.year === year),
-    [galleryPhotos, year],
-  )
-
-  const filterLabel = year || community.snapshots.filterAll
+  const galleryImages = GALLERY_IMAGES.map((image) => ({
+    ...image,
+    alt: community.snapshots.photoAlt,
+  }))
 
   return (
     <main className="community-page" id="top">
@@ -131,27 +119,9 @@ export default function CommunityPage() {
       <section className="community-snapshots" aria-labelledby="snapshots-title">
         <div className="community-container">
           <h2 id="snapshots-title">{community.snapshots.title}</h2>
-          <p className="community-gallery-status" aria-live="polite">
-            {filterLabel} · {visiblePhotos.length}
-            {community.snapshots.sourcePhotosSuffix}
-          </p>
-          <div className="community-tabs community-year-tabs" role="group" aria-label={community.snapshots.yearAria}>
-            {years.map((item: string) => (
-              <button
-                type="button"
-                className={year === item ? 'is-active' : ''}
-                aria-pressed={year === item}
-                onClick={() => setYear(year === item ? null : item)}
-                key={item}
-              >
-                {item}
-              </button>
-            ))}
-          </div>
           <div className="community-snapshot-gallery">
             <DomeGallery
-              images={visiblePhotos}
-              transitionKey={year || 'all'}
+              images={galleryImages}
               overlayBlurColor="#1a1a1a"
               grayscale
               imageBorderRadius="18px"
@@ -207,15 +177,21 @@ export default function CommunityPage() {
           <h2 id="blogs-title">{community.blogs.title}</h2>
           <div className="community-blog-grid">
             {community.blogs.posts.map((post: CommunityMessages['blogs']['posts'][number], index: number) => (
-              <article key={`${post.date}-${index}`}>
+              <a
+                href={post.href}
+                className="community-blog-card"
+                key={post.href}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <div className="community-blog-image">
-                  <span>{String(index + 1).padStart(2, '0')} · 04</span>
+                  <img src={BLOG_COVERS[index] ?? BLOG_COVERS[0]} alt="" />
                 </div>
                 <div className="community-blog-copy">
                   <span>{post.date}</span>
                   <h3>{post.title}</h3>
                 </div>
-              </article>
+              </a>
             ))}
           </div>
         </div>

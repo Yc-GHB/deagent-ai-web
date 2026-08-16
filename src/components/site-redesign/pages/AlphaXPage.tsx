@@ -9,6 +9,13 @@ const CAPABILITY_IMAGES = [
   '/figma-assets/alphax-auditable-record.png',
 ] as const
 
+const GALLERY_IMAGES = [
+  '/alphaX/alphax_1.png',
+  '/alphaX/alpahx_2.png',
+  '/alphaX/alphax_3.png',
+  '/alphaX/alphax_4.png',
+] as const
+
 export default function AlphaXPage() {
   const { messages } = useI18n()
   const alphax = messages.alphax
@@ -60,11 +67,9 @@ export default function AlphaXPage() {
         <div className="alphax-section-inner">
           <h2 id="alphax-gallery-title">{alphax.gallery.title}</h2>
           <div className="alphax-gallery-grid">
-            {alphax.gallery.items.map((item) => (
+            {alphax.gallery.items.map((item, index) => (
               <article className="alphax-gallery-card" key={item.screen}>
-                <span>{item.screen}</span>
-                <h3>{item.title}</h3>
-                <p>{alphax.gallery.placeholder}</p>
+                <img src={GALLERY_IMAGES[index] ?? GALLERY_IMAGES[0]} alt="" />
               </article>
             ))}
           </div>

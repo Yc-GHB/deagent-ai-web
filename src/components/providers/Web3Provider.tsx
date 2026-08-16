@@ -89,7 +89,7 @@ export const Web3Provider: FC<PropsWithChildren> = ({ children }) => {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider>
+        <RainbowKitProvider locale='en-US'>
           {children}
         </RainbowKitProvider>
       </QueryClientProvider>

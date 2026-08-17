@@ -12,7 +12,7 @@ import ConnectWalletButton from './ConnectWalletButton'
 function getActiveNavId(pathname: string, hash: string): string {
   const path = pathname.toLowerCase().replace(/\/$/, '') || '/'
   if (path === '/agents' || path === '/ai-agent' || path === '/alphax' || path === '/token-hub') return 'PRODUCT'
-  if (path === '/solutions' || path === '/products' || path === '/case-studies') return 'ECOSYSTEM'
+  if (path === '/solutions' || path === '/products' || path === '/case-studies' || path === '/integrations') return 'ECOSYSTEM'
   if (path === '/community' || path === '/event') return 'LEARN'
   if (path === '/buyback') return '$AIA'
   switch (hash) {

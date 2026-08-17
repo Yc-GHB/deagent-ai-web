@@ -135,7 +135,6 @@ export default function HomePage() {
   const scenarioRef = useRef<HTMLDivElement>(null)
   const scenarioCopyRef = useRef<HTMLDivElement>(null)
   const technologyPathRef = useRef<HTMLDivElement>(null)
-  const hasScenarioSwappedRef = useRef(false)
 
   const trustCards = home.trust.cards.map((card: TrustCardCopy, index: number) => ({
     ...card,
@@ -149,32 +148,24 @@ export default function HomePage() {
   useGSAP(() => {
     const scenario = scenarioRef.current
     if (!scenario) return
-    const triggerSwap = () => {
-      if (hasScenarioSwappedRef.current) return
-      hasScenarioSwappedRef.current = true
-      setActiveScenario(1)
-    }
-    const resetSwap = () => {
-      if (!hasScenarioSwappedRef.current) return
-      hasScenarioSwappedRef.current = false
-      setActiveScenario(0)
+    const SCENARIO_THRESHOLD = 0.55
+    const resolveScenarioIndex = (): number => (
+      scenario.getBoundingClientRect().top <= window.innerHeight * SCENARIO_THRESHOLD ? 1 : 0
+    )
+    const applyScenarioIndex = (next: number): void => {
+      setActiveScenario(current => (current === next ? current : next))
     }
     const trigger = ScrollTrigger.create({
       trigger: scenario,
       start: 'top 55%',
-      end: 'bottom 42%',
-      onEnter: triggerSwap,
-      onLeaveBack: resetSwap,
+      end: 'bottom top',
+      onEnter: () => applyScenarioIndex(1),
+      onEnterBack: () => applyScenarioIndex(1),
+      onLeaveBack: () => applyScenarioIndex(0),
     })
-    const syncScrollState = () => {
-      if (scenario.getBoundingClientRect().top <= window.innerHeight * 0.55) triggerSwap()
-      else resetSwap()
-    }
-    window.addEventListener('scroll', syncScrollState, { passive: true })
-    syncScrollState()
+    applyScenarioIndex(resolveScenarioIndex())
     ScrollTrigger.refresh()
     return () => {
-      window.removeEventListener('scroll', syncScrollState)
       trigger.kill()
     }
   }, { scope: scenarioRef })

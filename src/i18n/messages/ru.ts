@@ -76,7 +76,7 @@ export const ru: LocaleMessages = {
               {
                 title: "Интеграции",
                 description: "AliceAI и партнёры",
-                href: "/case-studies",
+                href: "/integrations",
               },
             ],
           },
@@ -573,12 +573,13 @@ export const ru: LocaleMessages = {
         },
       ],
       codeSample: {
+        filename: "agent.py",
         commentRuntime:
-          "# Рантайм агента: Agno AgentOS, модель маршрутизируется через AI Token Hub (dim comment)",
+          "# Рантайм агента: Agno AgentOS, модель маршрутизируется через AI Token Hub",
         agentName: "Hyperliquid Screener",
         instruction: "Вы — скринер рынка, а не советник.",
         commentScreening:
-          "# Скрининг — чистые вычисления, нулевая стоимость токенов (dim comment)",
+          "# Скрининг — чистые вычисления, нулевая стоимость токенов",
       },
     },
     waitlist: {
@@ -827,9 +828,8 @@ export const ru: LocaleMessages = {
 
   caseStudies: {
     hero: {
-      title: "Кейсы",
-      intro:
-        "Возможности DeAgentAI служат не только ему самому — они усиливают партнёров экосистемы. Ниже реальный кейс: как партнёр прошёл полный цикл model-to-agent-to-settlement на DeAgentAI.",
+      title: "Интеграции",
+      intro: "Интеграции",
       feature: {
         title:
           "Когда партнёр строит на DeAgentAI, оба получают новые возможности",
@@ -867,8 +867,6 @@ export const ru: LocaleMessages = {
     },
     path: {
       title: "Технический путь",
-      intro:
-        "AliceAI вызывает не сырую модель, а обёрнутый путь judge-decide-settle.",
       steps: [
         {
           title: "Собственная модель",
@@ -880,9 +878,6 @@ export const ru: LocaleMessages = {
           copy: "Ценность учитывается и проверяется ончейн",
         },
       ],
-      noteBefore:
-        "Тот же путь может переиспользовать любая система, которой нужно проверяемое суждение плюс рассчитываемые результаты. ",
-      noteStrong: "AliceAI — его первая внешняя валидация.",
     },
     results: {
       title: "Результаты",

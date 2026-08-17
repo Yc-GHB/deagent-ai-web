@@ -76,7 +76,7 @@ export const ja: LocaleMessages = {
               {
                 title: 'インテグレーション',
                 description: 'AliceAI とパートナー',
-                href: '/case-studies',
+                href: '/integrations',
               },
             ],
           },
@@ -572,12 +572,13 @@ export const ja: LocaleMessages = {
         },
       ],
       codeSample: {
+        filename: 'agent.py',
         commentRuntime:
-          '# Agent runtime: Agno AgentOS, model routed via AI Token Hub (dim comment)',
+          '# Agent runtime: Agno AgentOS, model routed via AI Token Hub',
         agentName: 'Hyperliquid Screener',
         instruction: 'You are a market screener, not an advisor.',
         commentScreening:
-          '# Screening is pure computation, zero token cost (dim comment)',
+          '# Screening is pure computation, zero token cost',
       },
     },
     waitlist: {
@@ -820,9 +821,8 @@ export const ja: LocaleMessages = {
 
   caseStudies: {
     hero: {
-      title: 'ケーススタディ',
-      intro:
-        'DeAgentAI の能力は自社だけのものではありません — エコシステムパートナーを強化します。以下は実例です。パートナーが DeAgentAI 上でモデル→エージェント→決済のフルループをどう走らせたか。',
+      title: 'インテグレーション',
+      intro: 'インテグレーション',
       feature: {
         title: 'パートナーが DeAgentAI 上に構築すると、双方に新しい能力が生まれる',
         copy: 'ワールドカップ期間中、AliceAI は一連の API を通じて DeAgentAI の独自モデル判断に接続し、試合予測エージェントを出荷しました。自前モデルはゼロ。経済層で直接決済。',
@@ -859,8 +859,6 @@ export const ja: LocaleMessages = {
     },
     path: {
       title: '技術パス',
-      intro:
-        'AliceAI が呼ぶのは生モデルではなく、判断・決定・決済が包装されたパスです。',
       steps: [
         {
           title: '独自モデル',
@@ -872,9 +870,6 @@ export const ja: LocaleMessages = {
           copy: '価値はオンチェーンで計量・検証可能',
         },
       ],
-      noteBefore:
-        '同じパスは、検証可能な判断と決済可能な結果が必要なあらゆるシステムで再利用できます。',
-      noteStrong: 'AliceAI はその最初の外部検証です。',
     },
     results: {
       title: '成果',

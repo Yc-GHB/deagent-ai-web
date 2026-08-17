@@ -56,7 +56,7 @@ export default function CaseStudiesPage() {
         />
         <div className="case-container case-hero-content">
           <header className="case-page-header">
-            <h1 id="case-page-title">{caseStudies.hero.intro}</h1>
+            <h1 id="case-page-title">{caseStudies.hero.title}</h1>
           </header>
 
           <article className="case-feature-card">
@@ -101,7 +101,6 @@ export default function CaseStudiesPage() {
         <div className="case-container">
           <header className="case-section-header">
             <h2 id="path-title">{caseStudies.path.title}</h2>
-            <p>{caseStudies.path.intro}</p>
           </header>
           <div className="case-path-flow">
             {technicalPath.map((step, index) => (
@@ -113,10 +112,6 @@ export default function CaseStudiesPage() {
               </div>
             ))}
           </div>
-          <p className="case-path-note">
-            {caseStudies.path.noteBefore}
-            <strong>{caseStudies.path.noteStrong}</strong>
-          </p>
         </div>
       </section>
 

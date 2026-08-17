@@ -74,7 +74,7 @@ export const en = {
               {
                 title: "Integrations",
                 description: "AliceAI & partners",
-                href: "/case-studies",
+                href: "/integrations",
               },
             ],
           },
@@ -574,12 +574,13 @@ export const en = {
         },
       ],
       codeSample: {
+        filename: "agent.py",
         commentRuntime:
-          "# Agent runtime: Agno AgentOS, model routed via AI Token Hub (dim comment)",
+          "# Agent runtime: Agno AgentOS, model routed via AI Token Hub",
         agentName: "Hyperliquid Screener",
         instruction: "You are a market screener, not an advisor.",
         commentScreening:
-          "# Screening is pure computation, zero token cost (dim comment)",
+          "# Screening is pure computation, zero token cost",
       },
     },
     waitlist: {
@@ -822,9 +823,8 @@ export const en = {
 
   caseStudies: {
     hero: {
-      title: "Case Studies",
-      intro:
-        "DeAgentAI's capabilities serve more than itself - they empower ecosystem partners. Below is a real case: how a partner ran the full model-to-agent-to-settlement loop on DeAgentAI.",
+      title: "Integrations",
+      intro: "Integrations",
       feature: {
         title: "When a partner builds on DeAgentAI, both grow new capabilities",
         copy: "During the World Cup, AliceAI plugged into DeAgentAI's proprietary model judgment through a set of APIs and shipped a match-prediction agent. Zero model of its own, settled directly at the economic layer.",
@@ -861,8 +861,6 @@ export const en = {
     },
     path: {
       title: "Technical Path",
-      intro:
-        "AliceAI calls not a raw model but a wrapped judge-decide-settle path.",
       steps: [
         {
           title: "Proprietary Model",
@@ -874,9 +872,6 @@ export const en = {
           copy: "Value metered verifiable on-chain",
         },
       ],
-      noteBefore:
-        "The same path can be reused by any system needing verifiable judgment plus settleable results. ",
-      noteStrong: "AliceAI is its first external validation.",
     },
     results: {
       title: "Results",

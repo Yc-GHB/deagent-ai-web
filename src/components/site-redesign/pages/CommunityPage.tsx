@@ -8,7 +8,7 @@ import DomeGallery from '../components/DomeGallery'
 import Prism from '../components/Prism'
 import './CommunityPage.css'
 
-const GALLERY_COUNT = 17
+const GALLERY_COUNT = 36
 const GALLERY_IMAGES = Array.from({ length: GALLERY_COUNT }, (_, index) => ({
   src: `/community-gallery/community-${String(index + 1).padStart(2, '0')}.jpg`,
   alt: '',

@@ -76,7 +76,7 @@ export const ko: LocaleMessages = {
               {
                 title: "통합",
                 description: "AliceAI 및 파트너",
-                href: "/case-studies",
+                href: "/integrations",
               },
             ],
           },
@@ -566,12 +566,13 @@ export const ko: LocaleMessages = {
         },
       ],
       codeSample: {
+        filename: "agent.py",
         commentRuntime:
-          "# 에이전트 런타임: Agno AgentOS, AI Token Hub를 통해 모델 라우팅 (dim comment)",
+          "# 에이전트 런타임: Agno AgentOS, AI Token Hub를 통해 모델 라우팅",
         agentName: "Hyperliquid Screener",
         instruction: "당신은 어드바이저가 아니라 마켓 스크리너입니다.",
         commentScreening:
-          "# 스크리닝은 순수 연산, 토큰 비용 제로 (dim comment)",
+          "# 스크리닝은 순수 연산, 토큰 비용 제로",
       },
     },
     waitlist: {
@@ -811,9 +812,8 @@ export const ko: LocaleMessages = {
 
   caseStudies: {
     hero: {
-      title: "사례 연구",
-      intro:
-        "DeAgentAI의 역량은 자신만을 위한 것이 아닙니다 — 생태계 파트너를 강화합니다. 아래는 실제 사례입니다: 파트너가 DeAgentAI에서 모델-에이전트-정산 전체 루프를 어떻게 실행했는지.",
+      title: "통합",
+      intro: "통합",
       feature: {
         title:
           "파트너가 DeAgentAI 위에 구축하면, 양쪽 모두 새로운 역량을 얻습니다",
@@ -848,16 +848,11 @@ export const ko: LocaleMessages = {
     },
     path: {
       title: "기술 경로",
-      intro:
-        "AliceAI가 호출하는 것은 원시 모델이 아니라 래핑된 판단-결정-정산 경로입니다.",
       steps: [
         { title: "독자 모델", copy: "DeAgentAI 모델이 판단 출력" },
         { title: "에이전트 래핑", copy: "De(cision)Agent 자율 에이전트" },
         { title: "경제 정산", copy: "온체인에서 계량·검증 가능한 가치" },
       ],
-      noteBefore:
-        "동일한 경로는 검증 가능한 판단과 정산 가능한 결과가 필요한 모든 시스템이 재사용할 수 있습니다. ",
-      noteStrong: "AliceAI는 첫 번째 외부 검증입니다.",
     },
     results: {
       title: "결과",

@@ -44,6 +44,15 @@ const slot = (index: number, distanceX: number, distanceY: number, total: number
   zIndex: total - index,
 })
 
+/**
+ * 按 frontIndex 生成牌序：front 在最前，其余依次后排。
+ */
+function buildOrder(frontIndex: number, total: number): number[] {
+  if (total <= 0) return []
+  const normalized = ((frontIndex % total) + total) % total
+  return Array.from({ length: total }, (_, index) => (normalized + index) % total)
+}
+
 const CardSwap = ({
   width = 300,
   height = 400,
@@ -77,47 +86,72 @@ const CardSwap = ({
     })
   }, [skewAmount])
 
-  const reset = useCallback(() => {
-    timelineRef.current?.kill()
-    order.current = cards.map((_, index) => index)
-    order.current.forEach((cardIndex, index) => place(cardRefs.current[cardIndex], slot(index, cardDistance, verticalDistance, cards.length)))
-  }, [cardDistance, cards.length, place, verticalDistance])
+  const placeOrder = useCallback((nextOrder: number[]) => {
+    order.current = nextOrder
+    nextOrder.forEach((cardIndex, index) => {
+      place(cardRefs.current[cardIndex], slot(index, cardDistance, verticalDistance, nextOrder.length))
+    })
+  }, [cardDistance, place, verticalDistance])
 
-  const swap = useCallback(() => {
-    if (order.current.length < 2 || timelineRef.current?.isActive()) return
-    const [front, ...rest] = order.current
-    const departing = cardRefs.current[front]
-    if (!departing) return
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (reducedMotion) {
-      order.current = [...rest, front]
-      order.current.forEach((cardIndex, index) => place(cardRefs.current[cardIndex], slot(index, cardDistance, verticalDistance, cards.length)))
+  /**
+   * 将最前卡片切到 targetFront；中断进行中的动画时直接落到正确牌序。
+   */
+  const syncToFront = useCallback((targetFront: number, animate: boolean) => {
+    const total = cards.length
+    if (total < 1) return
+    const wasAnimating = Boolean(timelineRef.current?.isActive())
+    timelineRef.current?.kill()
+    timelineRef.current = null
+    const nextOrder = buildOrder(targetFront, total)
+    const currentFront = order.current[0]
+    const reducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!animate || reducedMotion || wasAnimating || total < 2 || currentFront === undefined || currentFront === targetFront) {
+      placeOrder(nextOrder)
       return
     }
-
+    const departing = cardRefs.current[currentFront]
+    if (!departing) {
+      placeOrder(nextOrder)
+      return
+    }
+    const promoteOrder = nextOrder.filter((cardIndex) => cardIndex !== currentFront)
     const ease = easing === 'elastic' ? 'elastic.out(0.6,0.9)' : 'power1.inOut'
-    const tl = gsap.timeline({ defaults: { ease } })
+    const tl = gsap.timeline({
+      defaults: { ease },
+      onComplete: () => {
+        order.current = nextOrder
+        timelineRef.current = null
+      },
+    })
     timelineRef.current = tl
     tl.to(departing, { y: '+=500', duration: easing === 'elastic' ? 1.15 : 0.65 })
       .addLabel('promote', '-=0.72')
-
-    rest.forEach((cardIndex, index) => {
-      const target = slot(index, cardDistance, verticalDistance, cards.length)
+    promoteOrder.forEach((cardIndex, index) => {
+      const target = slot(index, cardDistance, verticalDistance, total)
       const card = cardRefs.current[cardIndex]
       if (!card) return
       tl.set(card, { zIndex: target.zIndex }, 'promote')
-      tl.to(card, { x: target.x, y: target.y, z: target.z, duration: easing === 'elastic' ? 1.05 : 0.65 }, `promote+=${index * 0.12}`)
+      tl.to(card, {
+        x: target.x,
+        y: target.y,
+        z: target.z,
+        duration: easing === 'elastic' ? 1.05 : 0.65,
+      }, `promote+=${index * 0.12}`)
     })
-
-    const back = slot(cards.length - 1, cardDistance, verticalDistance, cards.length)
+    const back = slot(total - 1, cardDistance, verticalDistance, total)
     tl.addLabel('return', 'promote+=0.28')
       .set(departing, { zIndex: back.zIndex }, 'return')
-      .to(departing, { x: back.x, y: back.y, z: back.z, duration: easing === 'elastic' ? 1.05 : 0.65 }, 'return')
-      .call(() => { order.current = [...rest, front] })
-  }, [cardDistance, cards.length, easing, place, verticalDistance])
+      .to(departing, {
+        x: back.x,
+        y: back.y,
+        z: back.z,
+        duration: easing === 'elastic' ? 1.05 : 0.65,
+      }, 'return')
+  }, [cardDistance, cards.length, easing, placeOrder, verticalDistance])
 
   useGSAP(() => {
-    reset()
+    timelineRef.current?.kill()
+    placeOrder(buildOrder(activeIndex, cards.length))
     previousActiveIndexRef.current = activeIndex
     return () => timelineRef.current?.kill()
   }, { scope: containerRef, dependencies: [cards.length, cardDistance, verticalDistance, skewAmount], revertOnUpdate: true })
@@ -125,7 +159,7 @@ const CardSwap = ({
   useGSAP(() => {
     if (previousActiveIndexRef.current === activeIndex) return
     previousActiveIndexRef.current = activeIndex
-    swap()
+    syncToFront(activeIndex, true)
   }, { scope: containerRef, dependencies: [activeIndex] })
 
   return (

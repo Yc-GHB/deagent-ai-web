@@ -452,7 +452,53 @@ export default function AgentsPage() {
               ))}
             </ol>
           </div>
-          <pre>{`${deploy.codeSample.commentRuntime}\nfrom agno.agent import Agent (cyan keywords)\nfrom agno.models.openai.like import OpenAILike\nagent = Agent(\nname="${deploy.codeSample.agentName}",\nmodel=OpenAILike(\nid="claude-3-5",\nbase_url="https://hub.deagentai.io/v1",\napi_key=user_scoped_key,\n),\ntools=[screen_market],\ninstructions=[\n"${deploy.codeSample.instruction}",\n],\n)\n\n${deploy.codeSample.commentScreening}`}</pre>
+          <div className="agents-code-block" aria-label={deploy.codeSample.filename}>
+            <div className="agents-code-header">
+              <span className="agents-window-controls" aria-hidden="true">
+                <i /><i /><i />
+              </span>
+              <span>{deploy.codeSample.filename}</span>
+            </div>
+            <pre>
+              <code>
+                <span className="code-comment">{deploy.codeSample.commentRuntime}</span>
+                {'\n'}
+                <span className="code-import">from</span>
+                {' agno.agent '}
+                <span className="code-import">import</span>
+                {' Agent\n'}
+                <span className="code-import">from</span>
+                {' agno.models.openai.like '}
+                <span className="code-import">import</span>
+                {' OpenAILike\n\n'}
+                <span className="code-purple">agent = Agent(</span>
+                {'\n'}
+                <span className="code-cyan">{`  name="${deploy.codeSample.agentName}",`}</span>
+                {'\n'}
+                <span className="code-cyan">  model=OpenAILike(</span>
+                {'\n'}
+                <span className="code-cyan">    id=&quot;claude-3-5&quot;,</span>
+                {'\n'}
+                <span className="code-cyan">    base_url=&quot;https://hub.deagentai.io/v1&quot;,</span>
+                {'\n'}
+                <span className="code-cyan">    api_key=user_scoped_key,</span>
+                {'\n'}
+                <span className="code-cyan">  ),</span>
+                {'\n'}
+                <span className="code-cyan">  tools=[screen_market],</span>
+                {'\n'}
+                <span className="code-cyan">  instructions=[</span>
+                {'\n'}
+                <span className="code-cyan">{`    "${deploy.codeSample.instruction}",`}</span>
+                {'\n'}
+                <span className="code-cyan">  ],</span>
+                {'\n'}
+                <span className="code-purple">)</span>
+                {'\n\n'}
+                <span className="code-comment">{deploy.codeSample.commentScreening}</span>
+              </code>
+            </pre>
+          </div>
         </div>
       </section>
 

@@ -76,7 +76,7 @@ export const zhCN: LocaleMessages = {
               {
                 title: "集成",
                 description: "AliceAI 与合作伙伴",
-                href: "/case-studies",
+                href: "/integrations",
               },
             ],
           },
@@ -537,11 +537,12 @@ export const zhCN: LocaleMessages = {
         },
       ],
       codeSample: {
+        filename: "agent.py",
         commentRuntime:
-          "# 智能体运行时：Agno AgentOS，模型经 AI Token Hub 路由（弱化注释）",
+          "# 智能体运行时：Agno AgentOS，模型经 AI Token Hub 路由",
         agentName: "Hyperliquid Screener",
         instruction: "你是市场筛选器，不是顾问。",
-        commentScreening: "# 筛选是纯计算，零 token 成本（弱化注释）",
+        commentScreening: "# 筛选是纯计算，零 token 成本",
       },
     },
     waitlist: {
@@ -769,9 +770,8 @@ export const zhCN: LocaleMessages = {
 
   caseStudies: {
     hero: {
-      title: "案例研究",
-      intro:
-        "DeAgentAI 的能力不止服务自身——也赋能生态伙伴。以下是真实案例：合作伙伴如何在 DeAgentAI 上跑通「模型 → 智能体 → 结算」全链路。",
+      title: "集成",
+      intro: "集成",
       feature: {
         title: "当伙伴基于 DeAgentAI 构建，双方都获得新能力",
         copy: "世界杯期间，AliceAI 通过一组 API 接入 DeAgentAI 专有模型判断，并上线赛事预测智能体。零自研模型，直接在经济层结算。",
@@ -805,14 +805,11 @@ export const zhCN: LocaleMessages = {
     },
     path: {
       title: "技术路径",
-      intro: "AliceAI 调用的不是裸模型，而是封装好的「判断—决策—结算」路径。",
       steps: [
         { title: "专有模型", copy: "DeAgentAI 模型输出判断" },
         { title: "智能体封装", copy: "De(cision)Agent 自主智能体" },
         { title: "经济结算", copy: "价值可计量、链上可验证" },
       ],
-      noteBefore: "同一路径可被任何需要可验证判断与可结算结果的系统复用。",
-      noteStrong: "AliceAI 是其首次外部验证。",
     },
     results: {
       title: "成果",

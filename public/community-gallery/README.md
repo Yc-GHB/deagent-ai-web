@@ -2,4 +2,10 @@
 
 Place photos directly in this folder. Supported formats: `.jpg`, `.jpeg`, `.png`, `.webp`, `.avif`.
 
-Rename new files to `community-NN.jpg` in sequence (currently `community-01.jpg` … `community-17.jpg`) and bump `GALLERY_COUNT` in `src/components/site-redesign/pages/CommunityPage.tsx`.
+Rename and compress with:
+
+```bash
+node scripts/compress-community-gallery.js
+```
+
+Then set `GALLERY_COUNT` in `src/components/site-redesign/pages/CommunityPage.tsx` to the new total (`community-01.jpg` … `community-NN.jpg`).

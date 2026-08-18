@@ -275,7 +275,7 @@ export const en = {
     voices: {
       eyebrow: "IN THEIR WORDS",
       title: "Voices from the team and ecosystem",
-      gridAria: "Testimonial placeholders",
+      gridAria: "Team and ecosystem videos",
     },
     partners: {
       eyebrow: "PARTNERSHIP & FUNDING",
@@ -914,9 +914,9 @@ export const en = {
     },
     video: {
       title: "Collaboration Video",
-      playAria: "Play collaboration video preview",
-      heading: "Collaboration Video · Placeholder",
-      caption: "DeAgentAI × AliceAI joint interview / case film (16:9)",
+      playAria: "Play collaboration video",
+      heading: "Collaboration Video",
+      caption: "DeAgentAI × AliceAI joint interview / case film",
     },
   },
 

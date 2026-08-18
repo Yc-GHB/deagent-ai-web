@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowRight, Play } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { useI18n } from '@/i18n/I18nProvider'
 import LightRays from '../components/LightRays'
 import './CaseStudiesPage.css'
@@ -16,6 +16,16 @@ const PRODUCT_IMAGES = [
   '/aliceAI/alice_2.png',
   '/aliceAI/alice_3.png',
 ] as const
+
+/** Integrations 页合作视频 */
+const COLLABORATION_VIDEO_ID = '1K451z6K97o' as const
+
+/**
+ * 生成 YouTube 嵌入地址。
+ */
+function buildYoutubeEmbedUrl(videoId: string): string {
+  return `https://www.youtube.com/embed/${videoId}`
+}
 
 function BulletCard({ label, title, items, tone }: { label: string; title: string; items: readonly string[]; tone: 'gold' | 'cyan' }) {
   return (
@@ -153,11 +163,16 @@ export default function CaseStudiesPage() {
       <section className="case-section case-video" id="collaboration-video" aria-labelledby="video-title">
         <div className="case-container">
           <h2 id="video-title">{caseStudies.video.title}</h2>
-          <button type="button" className="case-video-placeholder" aria-label={caseStudies.video.playAria}>
-            <span className="case-play-button"><Play fill="currentColor" size={24} /></span>
-            <strong>{caseStudies.video.heading}</strong>
-            <small>{caseStudies.video.caption}</small>
-          </button>
+          <div className="case-video-embed">
+            <iframe
+              src={buildYoutubeEmbedUrl(COLLABORATION_VIDEO_ID)}
+              title={caseStudies.video.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
+          </div>
         </div>
       </section>
     </main>

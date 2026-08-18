@@ -16,6 +16,28 @@ gsap.registerPlugin(ScrollTrigger, useGSAP)
 const HERO_VIDEO_SRC = '/images/home/hero_video.mp4'
 const HERO_VIDEO_POSTER = '/images/home/hero_poster.png'
 
+/** 首页 Voices 区 YouTube 视频（嵌入 ID） */
+const HOME_VOICE_VIDEOS = [
+  'ED7snamvQe0',
+  'XAWSIW9U7s0',
+  '0ltbOrdeIes',
+] as const
+
+/**
+ * 生成 YouTube 嵌入地址（静音自动播放并循环）。
+ */
+function buildYoutubeEmbedUrl(videoId: string): string {
+  const params = new URLSearchParams({
+    autoplay: '1',
+    mute: '1',
+    loop: '1',
+    playlist: videoId,
+    playsinline: '1',
+    rel: '0',
+  })
+  return `https://www.youtube.com/embed/${videoId}?${params.toString()}`
+}
+
 const TRUST_CARD_POSITIONS = ['trust-card--tl', 'trust-card--tr', 'trust-card--bl', 'trust-card--br'] as const
 
 const AGENT_CARD_LOGOS = [
@@ -406,9 +428,31 @@ export default function HomePage() {
         </section>
 
         <section id='learn' className='content-section voices-section'>
-          <SectionTitle eyebrow={home.voices.eyebrow} title={home.voices.title} />
-          <div data-reveal className='voices-feature' />
-          <div className='voices-grid' aria-label={home.voices.gridAria}><div /><div /><div /></div>
+          <SectionTitle eyebrow={home.voices.eyebrow} title={home.voices.title} centered />
+          <div data-reveal className='voices-feature'>
+            <iframe
+              src={buildYoutubeEmbedUrl(HOME_VOICE_VIDEOS[0])}
+              title={`${home.voices.title} 1`}
+              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+              allowFullScreen
+              loading='lazy'
+              referrerPolicy='strict-origin-when-cross-origin'
+            />
+          </div>
+          <div className='voices-grid' aria-label={home.voices.gridAria}>
+            {HOME_VOICE_VIDEOS.slice(1).map((videoId, index) => (
+              <div key={videoId} className='voices-grid-item'>
+                <iframe
+                  src={buildYoutubeEmbedUrl(videoId)}
+                  title={`${home.voices.title} ${index + 2}`}
+                  allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+                  allowFullScreen
+                  loading='lazy'
+                  referrerPolicy='strict-origin-when-cross-origin'
+                />
+              </div>
+            ))}
+          </div>
         </section>
 
         <section id='partners' className='content-section partners-section'>

@@ -116,11 +116,25 @@
 .case-product-meta h3 { margin: 10px 0 0; font-size: 15px; line-height: 20px; }
 
 .case-video { height: 636px; padding-top: 80px; }
-.case-video-placeholder { display: flex; width: 100%; height: 400px; margin-top: 32px; padding: 0; flex-direction: column; align-items: center; justify-content: center; border: 1px solid #1c1c20; border-radius: 14px; background: #080809; color: #fff; cursor: pointer; }
-.case-play-button { display: grid; width: 64px; height: 64px; margin-bottom: 24px; place-items: center; border: 1px solid #303038; border-radius: 50%; background: #0f1012; color: #2ce0ea; transition: transform .2s ease, border-color .2s ease; }
-.case-video-placeholder:hover .case-play-button { border-color: #2ce0ea; transform: scale(1.06); }
-.case-video-placeholder strong { font-size: 13px; line-height: 17px; }
-.case-video-placeholder small { margin-top: 16px; color: #6b6b73; font-size: 11px; line-height: 15px; }
+.case-video-embed {
+  position: relative;
+  width: 100%;
+  height: 0;
+  margin-top: 32px;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  border: 1px solid #1c1c20;
+  border-radius: 14px;
+  background: #080809;
+}
+.case-video-embed iframe {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
 
 .case-footer { border-top: 1px solid #141417; }
 
@@ -141,9 +155,4 @@
   .case-path-item { display: flex; flex-direction: column; }
   .case-path-node { flex: none; width: 100%; }
   .case-path-item > svg { align-self: center; flex-basis: 42px; transform: rotate(90deg); }
-  .case-video-placeholder { height: 300px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .case-play-button { transition: none; }
 }

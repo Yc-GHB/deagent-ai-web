@@ -269,7 +269,7 @@ export const zhTW: LocaleMessages = {
     voices: {
       eyebrow: "他們如是說",
       title: "來自團隊與生態的聲音",
-      gridAria: "推薦語佔位",
+      gridAria: "團隊與生態影片",
     },
     partners: {
       eyebrow: "合作與融資",
@@ -831,9 +831,9 @@ export const zhTW: LocaleMessages = {
     },
     video: {
       title: "合作影片",
-      playAria: "播放合作影片預覽",
-      heading: "合作影片 · 佔位",
-      caption: "DeAgentAI × AliceAI 聯合訪談 / 案例片（16:9）",
+      playAria: "播放合作影片",
+      heading: "合作影片",
+      caption: "DeAgentAI × AliceAI 聯合訪談 / 案例片",
     },
   },
 

@@ -9,6 +9,8 @@ import type { ScreenerGroup, ScreenerStrategy, ScreenerThresholds } from '@/type
 import {
   SCREENER_STRATEGIES,
   STRATEGY_DEFAULTS,
+  STRATEGY_SORT,
+  sortScreenedMarkets,
   toScreenerLocale,
 } from '@/utils/screener-format'
 
@@ -90,6 +92,13 @@ export function useScreener(locale: Locale) {
       run.thresholds.chg === debouncedThresholds.chg
     )
   }, [debouncedThresholds, group, guard, run, strategy])
+  const sortedRun = useMemo(() => {
+    if (!isCurrentRun || !run) return undefined
+    return {
+      ...run,
+      results: sortScreenedMarkets(run.results, STRATEGY_SORT[strategy]),
+    }
+  }, [isCurrentRun, run, strategy])
 
   return {
     strategy,
@@ -98,7 +107,7 @@ export function useScreener(locale: Locale) {
     guard,
     thresholds,
     markets: marketsQuery.data,
-    run: isCurrentRun ? run : undefined,
+    run: sortedRun,
     isMarketsLoading: marketsQuery.isLoading,
     isRunLoading: runQuery.isLoading || runQuery.isFetching,
     hasRunError: runQuery.isError,

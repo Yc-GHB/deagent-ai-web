@@ -10,33 +10,19 @@ import { useI18n, type Messages } from '@/i18n/I18nProvider'
 import CardSwap, { Card } from '../components/CardSwap'
 import ScrambledText from '../components/ScrambledText'
 import ConnectWalletButton from '../components/ConnectWalletButton'
+import VoicesVideo from '../components/VoicesVideo'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 const HERO_VIDEO_SRC = '/images/home/hero_video.mp4'
 const HERO_VIDEO_POSTER = '/images/home/hero_poster.png'
 
-/** 首页 Voices 区 YouTube 视频（嵌入 ID） */
-const HOME_VOICE_VIDEOS = [
-  'ED7snamvQe0',
-  'XAWSIW9U7s0',
-  '0ltbOrdeIes',
+/** 首页 Voices 区 YouTube 视频与封面 */
+const HOME_VOICE_ITEMS = [
+  { videoId: 'ED7snamvQe0', coverSrc: '/home-voices/voice-cover-1.png' },
+  { videoId: 'XAWSIW9U7s0', coverSrc: '/home-voices/voice-cover-2.png' },
+  { videoId: '0ltbOrdeIes', coverSrc: '/home-voices/voice-cover-3.png' },
 ] as const
-
-/**
- * 生成 YouTube 嵌入地址（静音自动播放并循环）。
- */
-function buildYoutubeEmbedUrl(videoId: string): string {
-  const params = new URLSearchParams({
-    autoplay: '1',
-    mute: '1',
-    loop: '1',
-    playlist: videoId,
-    playsinline: '1',
-    rel: '0',
-  })
-  return `https://www.youtube.com/embed/${videoId}?${params.toString()}`
-}
 
 const TRUST_CARD_POSITIONS = ['trust-card--tl', 'trust-card--tr', 'trust-card--bl', 'trust-card--br'] as const
 
@@ -430,25 +416,19 @@ export default function HomePage() {
         <section id='learn' className='content-section voices-section'>
           <SectionTitle eyebrow={home.voices.eyebrow} title={home.voices.title} centered />
           <div data-reveal className='voices-feature'>
-            <iframe
-              src={buildYoutubeEmbedUrl(HOME_VOICE_VIDEOS[0])}
+            <VoicesVideo
+              videoId={HOME_VOICE_ITEMS[0].videoId}
+              coverSrc={HOME_VOICE_ITEMS[0].coverSrc}
               title={`${home.voices.title} 1`}
-              allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-              allowFullScreen
-              loading='lazy'
-              referrerPolicy='strict-origin-when-cross-origin'
             />
           </div>
           <div className='voices-grid' aria-label={home.voices.gridAria}>
-            {HOME_VOICE_VIDEOS.slice(1).map((videoId, index) => (
-              <div key={videoId} className='voices-grid-item'>
-                <iframe
-                  src={buildYoutubeEmbedUrl(videoId)}
+            {HOME_VOICE_ITEMS.slice(1).map((item, index) => (
+              <div key={item.videoId} className='voices-grid-item'>
+                <VoicesVideo
+                  videoId={item.videoId}
+                  coverSrc={item.coverSrc}
                   title={`${home.voices.title} ${index + 2}`}
-                  allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-                  allowFullScreen
-                  loading='lazy'
-                  referrerPolicy='strict-origin-when-cross-origin'
                 />
               </div>
             ))}

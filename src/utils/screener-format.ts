@@ -1,5 +1,5 @@
 import type { Locale } from '@/i18n/locales'
-import type { ScreenerLocale, ScreenerStrategy, ScreenerThresholds } from '@/types/screener'
+import type { ScreenedMarket, ScreenerLocale, ScreenerStrategy, ScreenerThresholds } from '@/types/screener'
 
 export const SCREENER_STRATEGIES: readonly ScreenerStrategy[] = [
   'funding_arb',
@@ -13,6 +13,26 @@ export const STRATEGY_DEFAULTS: Record<ScreenerStrategy, ScreenerThresholds> = {
   low_turnover: { vol: 3, fund: 0, chg: 0 },
   volume_surge: { vol: 5, fund: 0, chg: 2 },
   premium_disloc: { vol: 3, fund: 0, chg: 0 },
+}
+
+export type ScreenerSortKey = 'fundingAPR' | 'vol24h' | 'change24h' | 'premium'
+
+/** 各策略默认按对应字段降序。 */
+export const STRATEGY_SORT: Record<ScreenerStrategy, ScreenerSortKey> = {
+  funding_arb: 'fundingAPR',
+  low_turnover: 'vol24h',
+  volume_surge: 'change24h',
+  premium_disloc: 'premium',
+}
+
+/**
+ * 按策略默认键降序排列筛选结果。
+ */
+export function sortScreenedMarkets(
+  results: readonly ScreenedMarket[],
+  sortKey: ScreenerSortKey,
+): ScreenedMarket[] {
+  return [...results].sort((left, right) => right[sortKey] - left[sortKey])
 }
 
 export const SLIDER_MAX = {

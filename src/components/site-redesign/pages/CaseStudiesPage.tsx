@@ -2,6 +2,7 @@
 
 import { ArrowRight } from 'lucide-react'
 import { useI18n } from '@/i18n/I18nProvider'
+import { buildYoutubeEmbedUrl } from '@/utils/youtube-embed'
 import LightRays from '../components/LightRays'
 import './CaseStudiesPage.css'
 
@@ -19,13 +20,6 @@ const PRODUCT_IMAGES = [
 
 /** Integrations 页合作视频 */
 const COLLABORATION_VIDEO_ID = '1K451z6K97o' as const
-
-/**
- * 生成 YouTube 嵌入地址。
- */
-function buildYoutubeEmbedUrl(videoId: string): string {
-  return `https://www.youtube.com/embed/${videoId}`
-}
 
 function BulletCard({ label, title, items, tone }: { label: string; title: string; items: readonly string[]; tone: 'gold' | 'cyan' }) {
   return (

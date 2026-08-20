@@ -104,7 +104,7 @@ function NavigationFlyout({
 }
 
 /**
- * 语言切换下拉。
+ * 语言切换下拉（移动端同样点击展开，菜单走文档流避免被裁切）。
  */
 function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
   const { locale, setLocale, messages } = useI18n()
@@ -134,7 +134,10 @@ function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
   }
 
   return (
-    <div ref={rootRef} className={`language-switcher ${compact ? 'language-switcher--compact' : ''} ${isOpen ? 'language-switcher--open' : ''}`}>
+    <div
+      ref={rootRef}
+      className={`language-switcher ${compact ? 'language-switcher--compact' : ''} ${isOpen ? 'language-switcher--open' : ''}`}
+    >
       <button
         type='button'
         className='language-selector'
@@ -174,6 +177,7 @@ export default function SiteNavigation() {
   const nav = messages.nav
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeNavMenu, setActiveNavMenu] = useState<string | null>(null)
+  const [mobileSection, setMobileSection] = useState<string | null>(null)
   const [headerSolid, setHeaderSolid] = useState(false)
   const [activeNavItem, setActiveNavItem] = useState('HOME')
   const [isGetAiaOpen, setIsGetAiaOpen] = useState(false)
@@ -190,7 +194,17 @@ export default function SiteNavigation() {
   useEffect(() => {
     setMenuOpen(false)
     setActiveNavMenu(null)
+    setMobileSection(null)
   }, [pathname])
+
+  useEffect(() => {
+    if (!menuOpen) return undefined
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = previousOverflow
+    }
+  }, [menuOpen])
 
   useEffect(() => {
     const updateHeader = () => setHeaderSolid(window.scrollY >= window.innerHeight - 100)
@@ -203,17 +217,31 @@ export default function SiteNavigation() {
     }
   }, [pathname])
 
+  const closeMobileMenu = (): void => {
+    setMenuOpen(false)
+    setMobileSection(null)
+  }
+
   const openGetAiaModal = (): void => {
     setIsGetAiaOpen(true)
     setActiveNavMenu(null)
-    setMenuOpen(false)
+    closeMobileMenu()
+  }
+
+  const handleMobileLinkClick = (event: MouseEvent<HTMLAnchorElement>, href: string): void => {
+    if (isGetAiaHref(href)) {
+      event.preventDefault()
+      openGetAiaModal()
+      return
+    }
+    closeMobileMenu()
   }
 
   return (
     <>
-      <header className={`site-header ${(headerSolid || activeNavMenu) ? 'site-header--solid' : ''}`}>
+      <header className={`site-header ${(headerSolid || activeNavMenu || menuOpen) ? 'site-header--solid' : ''}`}>
         <div className='site-nav'>
-          <SiteLink href='/' aria-label={nav.aria.home}>
+          <SiteLink href='/' aria-label={nav.aria.home} onClick={closeMobileMenu}>
             <img src='/deagentai-logo.svg' alt={nav.aria.logoAlt} />
           </SiteLink>
           <nav className='desktop-nav' aria-label={nav.aria.primary}>
@@ -264,24 +292,69 @@ export default function SiteNavigation() {
             <LanguageSwitcher />
             <ConnectWalletButton />
           </div>
-          <button type='button' className='mobile-menu-toggle' aria-label={nav.aria.toggle} onClick={() => setMenuOpen(open => !open)}>
+          <button
+            type='button'
+            className='mobile-menu-toggle'
+            aria-label={nav.aria.toggle}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen(open => !open)}
+          >
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
-        <nav className={`mobile-nav ${menuOpen ? 'mobile-nav--open' : ''}`}>
-          {nav.items.map(item => (
-            <SiteLink
-              key={item.id}
-              href={item.href}
-              className={activeNavItem === item.id ? 'nav-link--active' : ''}
-              aria-current={activeNavItem === item.id ? 'page' : undefined}
-              onClick={() => setMenuOpen(false)}
-            >
-              {item.label}
-            </SiteLink>
-          ))}
+        <nav className={`mobile-nav ${menuOpen ? 'mobile-nav--open' : ''}`} aria-label={nav.aria.primary} aria-hidden={!menuOpen}>
+          {nav.items.map(item => {
+            const flyout = nav.flyouts[item.id as keyof typeof nav.flyouts]
+            if (!flyout) {
+              return (
+                <SiteLink
+                  key={item.id}
+                  href={item.href}
+                  className={activeNavItem === item.id ? 'nav-link--active' : ''}
+                  aria-current={activeNavItem === item.id ? 'page' : undefined}
+                  onClick={closeMobileMenu}
+                >
+                  {item.label}
+                </SiteLink>
+              )
+            }
+            const isExpanded = mobileSection === item.id
+            const childLinks = flyout.columns.flatMap(column => column.items)
+            return (
+              <div
+                key={item.id}
+                className={`mobile-nav-section ${isExpanded ? 'mobile-nav-section--open' : ''} ${activeNavItem === item.id ? 'mobile-nav-section--active' : ''}`}
+              >
+                <button
+                  type='button'
+                  className='mobile-nav-trigger'
+                  aria-expanded={isExpanded}
+                  onClick={() => setMobileSection(isExpanded ? null : item.id)}
+                >
+                  <span>{item.label}</span>
+                  <ChevronDown className='nav-trigger-icon' size={14} strokeWidth={1.5} />
+                </button>
+                {isExpanded && (
+                  <div className='mobile-nav-links'>
+                    {childLinks.map(link => (
+                      <SiteLink
+                        key={link.title + link.href}
+                        href={link.href}
+                        external={link.external}
+                        className='mobile-nav-link'
+                        onClick={event => handleMobileLinkClick(event, link.href)}
+                      >
+                        <span>{link.title}</span>
+                        {link.external && <ArrowUpRight size={14} strokeWidth={1.5} />}
+                      </SiteLink>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )
+          })}
           <LanguageSwitcher compact />
-          <ConnectWalletButton compact onOpen={() => setMenuOpen(false)} />
+          <ConnectWalletButton compact onOpen={closeMobileMenu} />
         </nav>
       </header>
       <GetAiaModal open={isGetAiaOpen} onClose={() => setIsGetAiaOpen(false)} />

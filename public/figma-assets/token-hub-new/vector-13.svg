@@ -1,0 +1,22 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="1200" height="520" viewBox="0 0 1200 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="flow-lines">
+<path id="left-line-1" d="M304 114L364 215" stroke="#2CE0EA" stroke-opacity="0.4" stroke-linecap="round" stroke-dasharray="5 4"/>
+<rect id="left-dot-1" x="362" y="213" width="4" height="4" rx="1" fill="#2CE0EA" fill-opacity="0.6"/>
+<path id="left-line-2" d="M304 189L364 260" stroke="#2CE0EA" stroke-opacity="0.4" stroke-linecap="round" stroke-dasharray="5 4"/>
+<rect id="left-dot-2" x="362" y="258" width="4" height="4" rx="1" fill="#2CE0EA" fill-opacity="0.6"/>
+<path id="left-line-3" d="M304 265L364 305" stroke="#2CE0EA" stroke-opacity="0.4" stroke-linecap="round" stroke-dasharray="5 4"/>
+<rect id="left-dot-3" x="362" y="303" width="4" height="4" rx="1" fill="#2CE0EA" fill-opacity="0.6"/>
+<path id="right-line-1" d="M724 215L784 100" stroke="#2CE0EA" stroke-opacity="0.4" stroke-linecap="round" stroke-dasharray="5 4"/>
+<rect id="right-dot-1" x="722" y="213" width="4" height="4" rx="1" fill="#2CE0EA" fill-opacity="0.6"/>
+<path id="right-line-2" d="M724 232L784 148" stroke="#2CE0EA" stroke-opacity="0.4" stroke-linecap="round" stroke-dasharray="5 4"/>
+<rect id="right-dot-2" x="722" y="230" width="4" height="4" rx="1" fill="#2CE0EA" fill-opacity="0.6"/>
+<path id="right-line-3" d="M724 250L784 196" stroke="#2CE0EA" stroke-opacity="0.4" stroke-linecap="round" stroke-dasharray="5 4"/>
+<rect id="right-dot-3" x="722" y="248" width="4" height="4" rx="1" fill="#2CE0EA" fill-opacity="0.6"/>
+<path id="right-line-4" d="M724 268L784 244" stroke="#2CE0EA" stroke-opacity="0.4" stroke-linecap="round" stroke-dasharray="5 4"/>
+<rect id="right-dot-4" x="722" y="266" width="4" height="4" rx="1" fill="#2CE0EA" fill-opacity="0.6"/>
+<path id="right-line-5" d="M724 286L784 292" stroke="#2CE0EA" stroke-opacity="0.4" stroke-linecap="round" stroke-dasharray="5 4"/>
+<rect id="right-dot-5" x="722" y="284" width="4" height="4" rx="1" fill="#2CE0EA" fill-opacity="0.6"/>
+<path id="right-line-6" d="M724 305L784 340" stroke="#2CE0EA" stroke-opacity="0.4" stroke-linecap="round" stroke-dasharray="5 4"/>
+<rect id="right-dot-6" x="722" y="303" width="4" height="4" rx="1" fill="#2CE0EA" fill-opacity="0.6"/>
+</g>
+</svg>

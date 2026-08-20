@@ -652,61 +652,134 @@ export const ru: LocaleMessages = {
 
   tokenHub: {
     hero: {
-      title: "Один API — все передовые модели",
-      copyBefore:
-        "AI Token Hub объединяет ведущие закрытые и открытые модели за одним OpenAI-совместимым API. Каждый вызов учитывается, тарифицируется и рассчитывается по запросу, ",
-      copyStrong: "оплата в $AIA или USDT.",
-      copyAfter:
-        " Тела запросов никогда не сохраняются — только счётчики токенов и задержка.",
-      ctaEnter: "Войти в AI Token Hub",
-      ctaIntegration: "Смотреть интеграцию",
+      title: "AI TOKEN HUB",
+      copyBefore: "Один endpoint для всех frontier-моделей. Оплата за токен, расчёт в ",
+      copyStrongAia: "$AIA",
+      copyMiddle: " или ",
+      copyStrongUsdt: "$USDT",
+      copyAfter: ". Обслуживаем ",
+      copyStrongClients: "8 enterprise-клиентов",
+      copyEnd: ", скоро откроем доступ для частных разработчиков.",
+      kpis: {
+        totalRequests: { label: "ВСЕГО ОБРАБОТАНО ЗАПРОСОВ", value: "1,284,739,261", delta: "▲ 8.4%", deltaNote: "за 24 ч" },
+        tokensProcessed: { label: "ОБРАБОТАНО ТОКЕНОВ", value: "847.26", unit: "B", delta: "▲ 12.1%", deltaNote: "за 24 ч" },
+        mini: [
+          { label: "МОДЕЛЕЙ ОНЛАЙН", value: "38" },
+          { label: "АКТИВНЫХ API KEY", value: "260+" },
+          { label: "ENTERPRISE-КЛИЕНТОВ", value: "8" },
+          { label: "UPTIME 30 ДНЕЙ", value: "99.97%" },
+        ],
+      },
     },
-    role: {
-      eyebrow: "В СТЕКЕ DEAGENTAI",
-      title: "Его роль в экосистеме",
-      copyBefore:
-        "AI Token Hub несёт все AI-вызовы и учёт по экосистеме DeAgentAI. Каждая единица потребления логируется и рассчитывается по вызову. ",
-      copyStrong: "Это база учёта реального использования экосистемы.",
-      copyAfter:
-        " Протокольный доход, который он генерирует, — один из источников байбэка $AIA.",
-      flowAria: "Поток выручки AI Token Hub",
-      flow: [
-        {
-          title: "Реальное AI-использование",
-          copy: "Отраслевые вызовы учитываются по запросу",
-        },
-        {
-          title: "Протокольный доход",
-          copy: "$AIA / USDT рассчитываются за вызов",
-        },
-        {
-          title: "Байбэк $AIA",
-          copy: "Протокольный доход как источник байбэка",
-        },
+    enterprise: {
+      eyebrow: "Enterprise Track Record",
+      title: "Сначала enterprise, затем частные пользователи.",
+      copy: "До открытия для частных пользователей шлюз уже работал в enterprise production.",
+      asideTitle: "Тот же gateway. Тот же SLA.",
+      asideCopy: "Rate limits, failover и metering per call родились из enterprise-требований. Частные пользователи получают то же — без downgraded tier.",
+      facts: [
+        { value: "8", label: "ENTERPRISE-КЛИЕНТОВ · LIVE" },
+        { value: "99.97%", label: "UPTIME 30 ДНЕЙ", highlight: true },
       ],
     },
-    capabilities: {
-      title: "Ключевые возможности",
+    usage: {
+      eyebrow: "USAGE DATA",
+      title: "Прозрачное использование, аудит per call.",
+      copy: "Биллинг per token, агрегация почасово. Храним только counts и latency — never request/response content.",
+      recentCalls: {
+        title: "RECENT CALLS",
+        updated: "UPDATED HOURLY",
+        rows: [
+          { time: "14:00", model: "claude-opus-5", tokens: "4,320 tok", latency: "842ms" },
+          { time: "13:58", model: "gpt-5.2", tokens: "1,920 tok", latency: "312ms" },
+          { time: "13:41", model: "gemini-3-pro", tokens: "7,110 tok", latency: "1,104ms" },
+          { time: "13:22", model: "deepseek-v4", tokens: "2,640 tok", latency: "598ms" },
+          { time: "13:09", model: "grok-4", tokens: "980 tok", latency: "176ms" },
+          { time: "12:55", model: "qwen3-max", tokens: "5,760 tok", latency: "920ms" },
+          { time: "12:31", model: "alphax-1", tokens: "3,120 tok", latency: "740ms" },
+          { time: "12:14", model: "llama-4-405b", tokens: "6,480 tok", latency: "1,260ms" },
+        ],
+      },
+      chart: { title: "TOKENS / HOUR · LAST 24H", peak: "PEAK 61.4M", axis: ["00:00", "08:00", "16:00", "NOW"] },
+    },
+    models: {
+      eyebrow: "MODEL COVERAGE",
+      title: "38 моделей за одним API key.",
+      copy: "Все major closed/open models в одном OpenAI-compatible протоколе. Смена модели — одна строка.",
       items: [
-        {
-          title: "Один API — много моделей",
-          copy: "Claude, GPT, Gemini, DeepSeek и другие — под единым OpenAI-совместимым протоколом. Смените модель, изменив одну строку.",
-        },
-        {
-          title: "Учёт по вызову",
-          copy: "Реалтайм-учёт, тарификация и расчёт за вызов. Тела запросов не сохраняются — только токены и latency, баланс аудируемости и приватности.",
-        },
-        {
-          title: "Расчёт в $AIA",
-          copy: "Расчёт в $AIA или USDT. Пополнение в $AIA даёт скидку — нативный протокольный стимул расчёта.",
-        },
+        { name: "Claude Opus 5", provider: "ANTHROPIC", price: "$15.00 / 1M out", volume: "34% HUB VOLUME", volumePercent: 85, logo: "A", logoColor: "#d97757" },
+        { name: "GPT-5.2", provider: "OPENAI", price: "$12.00 / 1M out", volume: "26% HUB VOLUME", volumePercent: 65, logo: "O", logoColor: "#10a37f" },
+        { name: "Gemini 3 Pro", provider: "GOOGLE", price: "$8.00 / 1M out", volume: "17% HUB VOLUME", volumePercent: 42, logo: "G", logoColor: "#4285f4" },
+        { name: "DeepSeek V4", provider: "DEEPSEEK", price: "$1.10 / 1M out", volume: "12% HUB VOLUME", volumePercent: 30, logo: "D", logoColor: "#4d6bfe" },
+        { name: "Grok 4", provider: "XAI", price: "$9.00 / 1M out", volume: "6% HUB VOLUME", volumePercent: 15, logo: "X", logoColor: "#ffffff", logoTextColor: "#1a1a1a" },
+        { name: "Qwen 3 Max", provider: "ALIBABA", price: "$2.40 / 1M out", volume: "3% HUB VOLUME", volumePercent: 8, logo: "Q", logoColor: "#7c3aed" },
+        { name: "Llama 4 405B", provider: "META · OSS", price: "$0.90 / 1M out", volume: "1.5% HUB VOLUME", volumePercent: 4, logo: "M", logoColor: "#0668e1" },
+      ],
+      more: { name: "+31 моделей", provider: "MISTRAL · COHERE · KIMI · ...", price: "-", volume: "6.5% HUB VOLUME", volumePercent: 18, logo: "+", logoColor: "#6b6b73" },
+    },
+    integration: {
+      eyebrow: "INTEGRATION",
+      title: "Миграция в три строки кода.",
+      codeFilename: "client.py",
+      codeAria: "Пример интеграции AI Token Hub",
+      steps: [
+        { title: "Connect wallet, mint a key", copy: "Mint key через подпись кошелька; email не нужен. Keys привязаны к адресу, rotate/revoke anytime." },
+        { title: "Point base_url to the hub", copy: "Полная совместимость с OpenAI SDK. Python, TypeScript, Go, cURL." },
+        { title: "Top up in $AIA or $USDT", copyBefore: "Top up $AIA — ", copyStrong: "15% discount", copyAfter: ". Balance и usage в консоли real-time, spend alerts." },
+      ],
+      codeLines: [
+        { text: "# pip install openai", tone: "muted" },
+        { text: "from openai import OpenAI", tone: "purple" },
+        { text: "client = OpenAI(", tone: "yellow" },
+        { text: '  base_url="https://hub.deagentai.io/v1",', tone: "cyan" },
+        { text: '  api_key="dgt-••••••••••••••••",', tone: "cyan" },
+        { text: ")", tone: "yellow" },
+        { text: "resp = client.chat.completions.create(", tone: "yellow" },
+        { text: '  model="claude-opus-5",', tone: "cyan" },
+        { text: '  messages=[{"role": "user", "content": "gm"}],', tone: "cyan" },
+        { text: ")", tone: "yellow" },
+        { text: "# x-hub-tokens: 42  x-hub-cost: 0.0009 $AIA", tone: "muted" },
       ],
     },
-    cta: {
-      eyebrow: "НАЧАТЬ",
-      title: "Интеграция за 60 секунд",
-      copy: "Подключите кошелёк, смените один base_url и вызывайте любую передовую модель. Бесплатный уровень: 1M токенов в месяц.",
-      button: "Войти в продукт",
+    ecosystem: {
+      eyebrow: "ECOSYSTEM ROLE",
+      title: "Built for our own agents first.",
+      copy: "AI Token Hub — inference layer наших agents с первого дня. После 840M internal calls открыли external developers.",
+      steps: [
+        { number: "01", title: "Agents", copy: "Every inference from Sentry и всех agents — через Hub." },
+        { number: "02", title: "Routing", copy: "Auto routing/failover across 38 models by latency, cost, availability." },
+        { number: "03", title: "Metering", copy: "Metered per token. Bodies never persisted — only counts & latency." },
+        { number: "04", title: "Open Access", copy: "Same gateway & SLA для third-party developers." },
+      ],
+      diagram: {
+        callersLabel: "CALLERS",
+        gatewayLabel: "UNIFIED GATEWAY",
+        modelsLabel: "MODEL LAYER",
+        hubTitle: "AI Token Hub",
+        hubSubtitle: "OpenAI-compatible · direct, self-built",
+        hubBullets: ["Unified auth and quota", "Routed by latency, cost, availability", "Metered per token, content never stored"],
+        hubStats: [{ value: "38", label: "models online" }, { value: "99.97%", label: "30-day uptime" }],
+        callers: [
+          { title: "Enterprise clients", copy: "8 · live in production" },
+          { title: "DeAgentAI agents", copy: "Sentry and every in-house agent" },
+          { title: "Individual developers", copy: "Opening soon", badge: "NEW" },
+        ],
+        models: ["Claude Opus 5", "GPT-5.2", "Gemini 3 Pro", "DeepSeek V4", "Grok 4 · Qwen 3 Max", "+31 more models"],
+      },
+    },
+    waitlist: {
+      title: "Узнать первым",
+      copy: "Участники waitlist получают приоритетный доступ и 1M стартовых token credits.",
+      emailAria: "Email",
+      emailPlaceholder: "Ваш email",
+      submit: "В waitlist",
+      submitting: "Отправка…",
+      success: "Вы в списке",
+      alreadyJoined: "Вы уже в списке",
+      invalid: "Введите корректный email",
+      rateLimited: "Слишком много попыток. Подождите и повторите",
+      unavailable: "Waitlist временно недоступен",
+      error: "Не удалось отправить. Попробуйте позже",
     },
   },
 

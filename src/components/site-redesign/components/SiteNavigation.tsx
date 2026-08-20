@@ -319,7 +319,7 @@ export default function SiteNavigation() {
               )
             }
             const isExpanded = mobileSection === item.id
-            const childLinks = flyout.columns.flatMap(column => column.items)
+            const childLinks = (flyout.columns as readonly FlyoutColumn[]).flatMap(column => column.items)
             return (
               <div
                 key={item.id}

@@ -1,26 +1,37 @@
-# 依赖目录
+# 依赖与构建缓存
 node_modules
 .pnpm-store
-
-# Next.js 构建输出
 .next
 
-# 版本控制
+# 版本控制（含嵌套仓库）
 .git
-.gitignore
+**/.git
 
-# 开发工具配置
+# 开发用源码目录（运行时由 public/aia-game 提供）
+AIA game
+
+# 开发工具与 CI
 .vscode
 .idea
+.husky
+.github
+scripts
+
+# 文档
+*.md
+!public/**/*.md
 
 # 环境文件
 .env
 .env.*
 !.env.production
 
-# 日志
-*.log
+# Docker 自身
+Dockerfile*
+docker-compose*.yml
+.dockerignore
 
-# 系统文件
+# 日志与系统文件
+*.log
 .DS_Store
 Thumbs.db

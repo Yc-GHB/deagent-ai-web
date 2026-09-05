@@ -1,11 +1,17 @@
 'use client'
 
+import { FormEvent, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
+import { Toast } from '@/components/ui/Toast'
 import { useI18n } from '@/i18n/I18nProvider'
+import { submitWaitlist } from '@/services/screener-service'
+import { ScreenerApiError } from '@/types/screener'
+import { toScreenerLocale } from '@/utils/screener-format'
 import SideRays from '../components/SideRays'
 import './SolutionsPage.css'
 
 const CAPABILITY_ICONS = ['◎', '◈', '⇄'] as const
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 function CornerButton({ children, href, secondary = false }: { children: React.ReactNode; href: string; secondary?: boolean }) {
   return (
@@ -19,9 +25,34 @@ function CornerButton({ children, href, secondary = false }: { children: React.R
   )
 }
 
+function waitlistErrorCopy(
+  error: unknown,
+  copy: {
+    readonly invalid: string
+    readonly rateLimited: string
+    readonly unavailable: string
+    readonly error: string
+  },
+): string {
+  if (!(error instanceof ScreenerApiError)) return copy.error
+  if (error.status === 422) return copy.invalid
+  if (error.status === 429) return copy.rateLimited
+  if (error.status === 503) return copy.unavailable
+  return copy.error
+}
+
+/**
+ * 校验并返回可提交的邮箱。
+ */
+function extractWaitlistEmail(value: string): string {
+  const trimmed = value.trim()
+  return EMAIL_PATTERN.test(trimmed) ? trimmed : ''
+}
+
 export default function SolutionsPage() {
-  const { messages } = useI18n()
+  const { locale, messages } = useI18n()
   const solutions = messages.solutions
+  const waitlistCopy = messages.agents.waitlist
   const guarantees = solutions.how.guarantees
   const capabilities = solutions.capabilities.items.map((item, index) => ({
     ...item,
@@ -29,6 +60,41 @@ export default function SolutionsPage() {
   }))
   const useCases = solutions.useCases.items
   const codeComments = solutions.integration.codeComments
+  const [contact, setContact] = useState('')
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'submitting'>('idle')
+  const [toast, setToast] = useState<{ readonly id: number; readonly message: string; readonly type: 'success' | 'error' } | null>(null)
+
+  const submitCredentialsForm = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
+    event.preventDefault()
+    if (submitStatus === 'submitting') return
+    const email = extractWaitlistEmail(contact)
+    if (!email) {
+      setToast({ id: Date.now(), message: waitlistCopy.invalid, type: 'error' })
+      return
+    }
+    setSubmitStatus('submitting')
+    try {
+      const result = await submitWaitlist({
+        email,
+        source: 'solutions_page',
+        locale: toScreenerLocale(locale),
+      })
+      setToast({
+        id: Date.now(),
+        message: result.alreadyJoined ? waitlistCopy.alreadyJoined : waitlistCopy.success,
+        type: 'success',
+      })
+      setContact('')
+    } catch (error) {
+      setToast({
+        id: Date.now(),
+        message: waitlistErrorCopy(error, waitlistCopy),
+        type: 'error',
+      })
+    } finally {
+      setSubmitStatus('idle')
+    }
+  }
 
   return (
     <main className="solutions-page" id="top">
@@ -147,13 +213,31 @@ export default function SolutionsPage() {
         <div>
           <h2 id="credentials-title">{solutions.credentials.title}</h2>
           <p>{solutions.credentials.copy}</p>
-          <form onSubmit={(event) => event.preventDefault()}>
+          <form onSubmit={submitCredentialsForm}>
             <label className="sr-only" htmlFor="solutions-contact">{solutions.credentials.inputLabel}</label>
-            <input id="solutions-contact" type="text" placeholder={solutions.credentials.inputPlaceholder} />
-            <button type="submit">{solutions.credentials.submit}</button>
+            <input
+              id="solutions-contact"
+              type="email"
+              autoComplete="email"
+              value={contact}
+              onChange={event => setContact(event.target.value)}
+              placeholder={solutions.credentials.inputPlaceholder}
+              disabled={submitStatus === 'submitting'}
+            />
+            <button type="submit" disabled={submitStatus === 'submitting'}>
+              {submitStatus === 'submitting' ? waitlistCopy.submitting : solutions.credentials.submit}
+            </button>
           </form>
         </div>
       </section>
+      {toast ? (
+        <Toast
+          key={toast.id}
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      ) : null}
     </main>
   )
 }

@@ -3,12 +3,11 @@ import { en } from './en'
 import { zhCN } from './zh-CN'
 import { zhTW } from './zh-TW'
 import { ja } from './ja'
-import { ko } from './ko'
 import { ru } from './ru'
 import type { LocaleMessages, Messages } from './types'
 
 export type { LocaleMessages, Messages }
-export { en, zhCN, zhTW, ja, ko, ru }
+export { en, zhCN, zhTW, ja, ru }
 
 /** 运行时按 locale 取字典 */
 export const messagesByLocale: Record<Locale, LocaleMessages> = {
@@ -16,6 +15,5 @@ export const messagesByLocale: Record<Locale, LocaleMessages> = {
   'zh-CN': zhCN,
   'zh-TW': zhTW,
   ja,
-  ko,
   ru,
 }

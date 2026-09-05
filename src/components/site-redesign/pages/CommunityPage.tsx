@@ -36,10 +36,10 @@ const CHANNEL_HREFS = [
 ] as const
 
 const BLOG_COVERS = [
+  '/community-blogs/blog-00.png',
   '/community-blogs/blog-01.png',
   '/community-blogs/blog-02.png',
   '/community-blogs/blog-03.png',
-  '/community-blogs/blog-04.png',
 ] as const
 
 type CommunityMessages = Messages['community']

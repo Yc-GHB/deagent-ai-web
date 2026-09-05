@@ -53,7 +53,7 @@ export const en = {
             title: "INFRASTRUCTURE",
             items: [
               {
-                title: "AI Token Hub",
+                title: "AI Token Smart Router",
                 description: "One API, all models",
                 href: "/token-hub",
               },
@@ -107,13 +107,18 @@ export const en = {
                 href: "/community",
               },
               {
+                title: "Catch $AIA",
+                description: "Camera gesture mini game",
+                href: "/aia-game",
+              },
+              {
                 title: "Whitepaper",
                 description: "Read the paper",
                 href: "https://deagentai.gitbook.io/deagentai",
                 external: true,
               },
               {
-                title: "MiCA Whitepaper",
+                title: "MiCAR Whitepaper",
                 description: "Compliance",
                 href: "https://deagent.ai/micar-whitepaper.pdf",
                 external: true,
@@ -141,7 +146,7 @@ export const en = {
         { label: "AI Agents", badge: "NEW", href: "/agents" },
         { label: "AlphaX", href: "/alphax" },
         { label: "CorrAI", href: "https://corr.ai/en" },
-        { label: "AI Token Hub", href: "/token-hub" },
+        { label: "AI Token Smart Router", href: "/token-hub" },
       ],
     },
     community: {
@@ -294,7 +299,7 @@ export const en = {
       beta: "IN BETA · CONNECT WALLET TO START",
       title: "AI Agents",
       description:
-        "Deploy in one click - no API key of your own required. Every inference is settled through AI Token Hub, paid in $AIA or $USDT. First agent: Sentry, watching the entire Hyperliquid market 24/7.",
+        "Deploy in one click - no API key of your own required. Every inference is settled through AI Token Smart Router, paid in $AIA or $USDT. First agent: Sentry, watching the entire Hyperliquid market 24/7.",
       kpis: [
         {
           label: "MARKETS COVERED",
@@ -576,11 +581,10 @@ export const en = {
       codeSample: {
         filename: "agent.py",
         commentRuntime:
-          "# Agent runtime: Agno AgentOS, model routed via AI Token Hub",
+          "# Agent runtime: Agno AgentOS, model routed via AI Token Smart Router",
         agentName: "Hyperliquid Screener",
         instruction: "You are a market screener, not an advisor.",
-        commentScreening:
-          "# Screening is pure computation, zero token cost",
+        commentScreening: "# Screening is pure computation, zero token cost",
       },
     },
     waitlist: {
@@ -653,8 +657,9 @@ export const en = {
 
   tokenHub: {
     hero: {
-      title: "AI TOKEN HUB",
-      copyBefore: "One endpoint for every frontier model. Pay per token, settle in ",
+      title: "AI TOKEN SMART ROUTER",
+      copyBefore:
+        "One endpoint for every frontier model. Pay per token, settle in ",
       copyStrongAia: "$AIA",
       copyMiddle: " or ",
       copyStrongUsdt: "$USDT",
@@ -703,20 +708,60 @@ export const en = {
         title: "RECENT CALLS",
         updated: "UPDATED HOURLY",
         rows: [
-          { time: "14:00", model: "claude-opus-5", tokens: "4,320 tok", latency: "842ms" },
-          { time: "13:58", model: "gpt-5.2", tokens: "1,920 tok", latency: "312ms" },
-          { time: "13:41", model: "gemini-3-pro", tokens: "7,110 tok", latency: "1,104ms" },
-          { time: "13:22", model: "deepseek-v4", tokens: "2,640 tok", latency: "598ms" },
-          { time: "13:09", model: "grok-4", tokens: "980 tok", latency: "176ms" },
-          { time: "12:55", model: "qwen3-max", tokens: "5,760 tok", latency: "920ms" },
-          { time: "12:31", model: "alphax-1", tokens: "3,120 tok", latency: "740ms" },
-          { time: "12:14", model: "llama-4-405b", tokens: "6,480 tok", latency: "1,260ms" },
+          {
+            time: "14:00",
+            model: "claude-opus-5",
+            tokens: "4,320 tok",
+            latency: "842ms",
+          },
+          {
+            time: "13:58",
+            model: "gpt-5.2",
+            tokens: "1,920 tok",
+            latency: "312ms",
+          },
+          {
+            time: "13:41",
+            model: "gemini-3-pro",
+            tokens: "7,110 tok",
+            latency: "1,104ms",
+          },
+          {
+            time: "13:22",
+            model: "deepseek-v4",
+            tokens: "2,640 tok",
+            latency: "598ms",
+          },
+          {
+            time: "13:09",
+            model: "grok-4",
+            tokens: "980 tok",
+            latency: "176ms",
+          },
+          {
+            time: "12:55",
+            model: "qwen3-max",
+            tokens: "5,760 tok",
+            latency: "920ms",
+          },
+          {
+            time: "12:31",
+            model: "alphax-1",
+            tokens: "3,120 tok",
+            latency: "740ms",
+          },
+          {
+            time: "12:14",
+            model: "llama-4-405b",
+            tokens: "6,480 tok",
+            latency: "1,260ms",
+          },
         ],
       },
       chart: {
-        title: "TOKENS / HOUR · LAST 24H",
-        peak: "PEAK 61.4M",
-        axis: ["00:00", "08:00", "16:00", "NOW"],
+        title: "TOKENS / DAY · LAST 15D",
+        peak: "PEAK",
+        axis: ["", "", "", ""],
       },
     },
     models: {
@@ -724,13 +769,70 @@ export const en = {
       title: "38 models behind a single API key.",
       copy: "Every major closed and open-weight model, wrapped in one OpenAI-compatible protocol. Switching models means changing a single string.",
       items: [
-        { name: "Claude Opus 5", provider: "ANTHROPIC", price: "$15.00 / 1M out", volume: "34% OF HUB VOLUME", volumePercent: 85, logo: "A", logoColor: "#d97757" },
-        { name: "GPT-5.2", provider: "OPENAI", price: "$12.00 / 1M out", volume: "26% OF HUB VOLUME", volumePercent: 65, logo: "O", logoColor: "#10a37f" },
-        { name: "Gemini 3 Pro", provider: "GOOGLE", price: "$8.00 / 1M out", volume: "17% OF HUB VOLUME", volumePercent: 42, logo: "G", logoColor: "#4285f4" },
-        { name: "DeepSeek V4", provider: "DEEPSEEK", price: "$1.10 / 1M out", volume: "12% OF HUB VOLUME", volumePercent: 30, logo: "D", logoColor: "#4d6bfe" },
-        { name: "Grok 4", provider: "XAI", price: "$9.00 / 1M out", volume: "6% OF HUB VOLUME", volumePercent: 15, logo: "X", logoColor: "#ffffff", logoTextColor: "#1a1a1a" },
-        { name: "Qwen 3 Max", provider: "ALIBABA", price: "$2.40 / 1M out", volume: "3% OF HUB VOLUME", volumePercent: 8, logo: "Q", logoColor: "#7c3aed" },
-        { name: "Llama 4 405B", provider: "META · OSS", price: "$0.90 / 1M out", volume: "1.5% OF HUB VOLUME", volumePercent: 4, logo: "M", logoColor: "#0668e1" },
+        {
+          name: "Claude Opus 5",
+          provider: "ANTHROPIC",
+          price: "$15.00 / 1M out",
+          volume: "34% OF HUB VOLUME",
+          volumePercent: 85,
+          logo: "A",
+          logoColor: "#d97757",
+        },
+        {
+          name: "GPT-5.2",
+          provider: "OPENAI",
+          price: "$12.00 / 1M out",
+          volume: "26% OF HUB VOLUME",
+          volumePercent: 65,
+          logo: "O",
+          logoColor: "#10a37f",
+        },
+        {
+          name: "Gemini 3 Pro",
+          provider: "GOOGLE",
+          price: "$8.00 / 1M out",
+          volume: "17% OF HUB VOLUME",
+          volumePercent: 42,
+          logo: "G",
+          logoColor: "#4285f4",
+        },
+        {
+          name: "DeepSeek V4",
+          provider: "DEEPSEEK",
+          price: "$1.10 / 1M out",
+          volume: "12% OF HUB VOLUME",
+          volumePercent: 30,
+          logo: "D",
+          logoColor: "#4d6bfe",
+        },
+        {
+          name: "Grok 4",
+          provider: "XAI",
+          price: "$9.00 / 1M out",
+          volume: "6% OF HUB VOLUME",
+          volumePercent: 15,
+          logo: "X",
+          logoColor: "#ffffff",
+          logoTextColor: "#1a1a1a",
+        },
+        {
+          name: "Qwen 3 Max",
+          provider: "ALIBABA",
+          price: "$2.40 / 1M out",
+          volume: "3% OF HUB VOLUME",
+          volumePercent: 8,
+          logo: "Q",
+          logoColor: "#7c3aed",
+        },
+        {
+          name: "Llama 4 405B",
+          provider: "META · OSS",
+          price: "$0.90 / 1M out",
+          volume: "1.5% OF HUB VOLUME",
+          volumePercent: 4,
+          logo: "M",
+          logoColor: "#0668e1",
+        },
       ],
       more: {
         name: "+31 more models",
@@ -746,7 +848,7 @@ export const en = {
       eyebrow: "INTEGRATION",
       title: "Migrate in three lines of code.",
       codeFilename: "client.py",
-      codeAria: "AI Token Hub integration sample",
+      codeAria: "AI Token Smart Router integration sample",
       steps: [
         {
           title: "Connect wallet, mint a key",
@@ -760,7 +862,8 @@ export const en = {
           title: "Top up in $AIA or $USDT",
           copyBefore: "Top up with $AIA for a ",
           copyStrong: "15% discount",
-          copyAfter: ". Balance and usage are visible in the console in real time, with spend alerts.",
+          copyAfter:
+            ". Balance and usage are visible in the console in real time, with spend alerts.",
         },
       ],
       codeLines: [
@@ -772,7 +875,10 @@ export const en = {
         { text: ")", tone: "yellow" },
         { text: "resp = client.chat.completions.create(", tone: "yellow" },
         { text: '  model="claude-opus-5",', tone: "cyan" },
-        { text: '  messages=[{"role": "user", "content": "gm"}],', tone: "cyan" },
+        {
+          text: '  messages=[{"role": "user", "content": "gm"}],',
+          tone: "cyan",
+        },
         { text: ")", tone: "yellow" },
         { text: "# x-hub-tokens: 42  x-hub-cost: 0.0009 $AIA", tone: "muted" },
       ],
@@ -780,18 +886,34 @@ export const en = {
     ecosystem: {
       eyebrow: "ECOSYSTEM ROLE",
       title: "Built for our own agents first.",
-      copy: "AI Token Hub is not a new standalone product. It is the inference layer our own agents have run on from the start, opened to external developers after serving 840 million internal calls.",
+      copy: "AI Token Smart Router is not a new standalone product. It is the inference layer our own agents have run on from the start, opened to external developers after serving 840 million internal calls.",
       steps: [
-        { number: "01", title: "Agents", copy: "Every inference from Sentry and every agent on the platform is routed through the Hub." },
-        { number: "02", title: "Routing", copy: "Automatic routing and failover across 38 models, weighted by latency, cost, and availability." },
-        { number: "03", title: "Metering", copy: "Metered per token. Request and response bodies are never persisted; only counts and latency are retained." },
-        { number: "04", title: "Open Access", copy: "The same gateway and the same SLA, opened directly to third-party developers." },
+        {
+          number: "01",
+          title: "Agents",
+          copy: "Every inference from Sentry and every agent on the platform is routed through the Hub.",
+        },
+        {
+          number: "02",
+          title: "Routing",
+          copy: "Automatic routing and failover across 38 models, weighted by latency, cost, and availability.",
+        },
+        {
+          number: "03",
+          title: "Metering",
+          copy: "Metered per token. Request and response bodies are never persisted; only counts and latency are retained.",
+        },
+        {
+          number: "04",
+          title: "Open Access",
+          copy: "The same gateway and the same SLA, opened directly to third-party developers.",
+        },
       ],
       diagram: {
         callersLabel: "CALLERS",
         gatewayLabel: "UNIFIED GATEWAY",
         modelsLabel: "MODEL LAYER",
-        hubTitle: "AI Token Hub",
+        hubTitle: "AI Token Smart Router",
         hubSubtitle: "OpenAI-compatible · direct, self-built",
         hubBullets: [
           "Unified auth and quota",
@@ -804,8 +926,15 @@ export const en = {
         ],
         callers: [
           { title: "Enterprise clients", copy: "8 · live in production" },
-          { title: "DeAgentAI agents", copy: "Sentry and every in-house agent" },
-          { title: "Individual developers", copy: "Opening soon", badge: "NEW" },
+          {
+            title: "DeAgentAI agents",
+            copy: "Sentry and every in-house agent",
+          },
+          {
+            title: "Individual developers",
+            copy: "Opening soon",
+            badge: "NEW",
+          },
         ],
         models: [
           "Claude Opus 5",
@@ -822,7 +951,7 @@ export const en = {
       copy: "Waitlist members get priority access and 1M starting token credits.",
       emailAria: "Your email",
       emailPlaceholder: "Your email",
-      submit: "Join the waitlist",
+      submit: "Apply",
       submitting: "Joining…",
       success: "You are on the list",
       alreadyJoined: "Already on the list",
@@ -943,8 +1072,8 @@ export const en = {
     credentials: {
       title: "Get Access Credentials",
       copy: "Describe your system and use case; we'll provide the matching integration spec and support.",
-      inputLabel: "Your email or Telegram",
-      inputPlaceholder: "Your email / Telegram",
+      inputLabel: "Your email",
+      inputPlaceholder: "Your email",
       submit: "Contact Us",
     },
   },
@@ -1066,7 +1195,8 @@ export const en = {
         },
         {
           value: "W3Labs",
-          title: "Offline community brand incubated by the DeAgentAI Ecosystem Fund",
+          title:
+            "Offline community brand incubated by the DeAgentAI Ecosystem Fund",
           footnote: "",
         },
         {
@@ -1098,6 +1228,12 @@ export const en = {
       title: "Latest from DeAgentAI",
       posts: [
         {
+          date: "AUG 2026",
+          title:
+            "From Intelligence Layer to Economic Layer: How We Ran the Value Flywheel in the Bear Market",
+          href: "https://medium.com/@deagent.ai/from-intelligence-layer-to-economic-layer-how-we-ran-the-value-flywheel-in-the-bear-market-3a9936bbfcca",
+        },
+        {
           date: "APR 2026",
           title: "The model is powerful enough. What comes next?",
           href: "https://medium.com/@deagent.ai/the-model-is-powerful-enough-what-comes-next-f1e0909ae66d",
@@ -1109,13 +1245,9 @@ export const en = {
         },
         {
           date: "OCT 2025",
-          title: "AI Oracles Are Broken. The Fix is Cryptographic, Not Reputational.",
+          title:
+            "AI Oracles Are Broken. The Fix is Cryptographic, Not Reputational.",
           href: "https://medium.com/@deagent.ai/ai-oracles-are-broken-the-fix-is-cryptographic-not-reputational-e89c40db71b4",
-        },
-        {
-          date: "SEP 2025",
-          title: "$AIA Genesis Staking",
-          href: "https://medium.com/@deagent.ai/aia-genesis-staking-81d03e1bf72d",
         },
       ],
     },

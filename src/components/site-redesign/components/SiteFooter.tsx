@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useI18n } from '@/i18n/I18nProvider'
+import { isTokenHubHref, SHOW_TOKEN_HUB } from '@/config/feature-flags'
 
 const SOCIAL_ICONS: Record<string, string> = {
   'https://discord.com/invite/officialdeagentai': '/figma-assets/discord.svg',
@@ -15,6 +16,9 @@ const SOCIAL_ICONS: Record<string, string> = {
 export function SiteFooter() {
   const { messages } = useI18n()
   const footer = messages.footer
+  const productLinks = SHOW_TOKEN_HUB
+    ? footer.products.links
+    : footer.products.links.filter(link => !isTokenHubHref(link.href))
 
   return (
     <footer className='site-footer'>
@@ -25,7 +29,7 @@ export function SiteFooter() {
         </div>
         <div className='footer-products'>
           <h3>{footer.products.title}</h3>
-          {footer.products.links.map(link => {
+          {productLinks.map(link => {
             const isExternal = link.href.startsWith('http')
             const content = (
               <>

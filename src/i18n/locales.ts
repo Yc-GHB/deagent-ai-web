@@ -1,5 +1,5 @@
 /** 站点支持的语言标识 */
-export const LOCALES = ['en', 'zh-CN', 'zh-TW', 'ja', 'ko', 'ru'] as const
+export const LOCALES = ['en', 'zh-CN', 'zh-TW', 'ja', 'ru'] as const
 
 export type Locale = (typeof LOCALES)[number]
 
@@ -20,7 +20,6 @@ export const LOCALE_META: readonly LocaleMeta[] = [
   { code: 'zh-CN', label: '简体中文', short: '简' },
   { code: 'zh-TW', label: '繁體中文', short: '繁' },
   { code: 'ja', label: '日本語', short: 'JA' },
-  { code: 'ko', label: '한국어', short: '한' },
   { code: 'ru', label: 'Русский', short: 'RU' },
 ]
 
@@ -41,7 +40,6 @@ export function matchBrowserLocale(language: string): Locale {
     return 'zh-CN'
   }
   if (normalized.startsWith('ja')) return 'ja'
-  if (normalized.startsWith('ko')) return 'ko'
   if (normalized.startsWith('ru')) return 'ru'
   return DEFAULT_LOCALE
 }

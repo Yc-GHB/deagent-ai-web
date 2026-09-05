@@ -56,8 +56,6 @@ const MODEL_LAYER_LOGOS: readonly { readonly logos: readonly ModelLogoAsset[] }[
   { logos: [{ title: 'More models', plus: true, color: '#16181A' }] },
 ]
 
-const HOURLY_BARS: readonly number[] = [58, 64, 47, 57, 65, 70, 47, 57, 49, 58, 53, 45, 27, 20, 24, 42, 56, 55, 47, 61]
-
 const ENTERPRISE_IMAGE_SRC = '/figma-assets/token-hub-new/raw-03.jpeg'
 const WAITLIST_BG_SRC = '/figma-assets/token-hub-new/raw-07.png'
 
@@ -165,12 +163,13 @@ function waitlistErrorCopy(
 }
 
 /**
- * AI Token Hub 产品页（对齐 Handoff 实现：Word Globe、模型 logo、架构流光）。
+ * AI Token Smart Router 产品页（对齐 Handoff 实现：Word Globe、模型 logo、架构流光）。
  */
 export default function TokenHubPage() {
   const { locale, messages } = useI18n()
   const tokenHub = messages.tokenHub
-  const liveKpis = useTokenHubLiveKpis()
+  const liveUsage = useTokenHubLiveKpis()
+  const liveKpis = liveUsage.kpis
   const [email, setEmail] = useState('')
   const [waitlistStatus, setWaitlistStatus] = useState<'idle' | 'submitting'>('idle')
   const [toast, setToast] = useState<{ readonly id: number; readonly message: string; readonly type: 'success' | 'error' } | null>(null)
@@ -212,7 +211,7 @@ export default function TokenHubPage() {
       <section className="hub-hero" aria-labelledby="hub-title">
         <div className="hub-hero-globe" aria-hidden="true">
           <TextSphere
-            word="AI TOKEN HUB"
+            word="AI TOKEN SMART ROUTER"
             color="#60777b"
             font={{ fontFamily: 'Geist Mono, monospace', fontWeight: 500, fontSize: 15 }}
             speed={5}
@@ -233,21 +232,31 @@ export default function TokenHubPage() {
             <article className="hub-kpi hub-kpi--wide">
               <small>{tokenHub.hero.kpis.totalRequests.label}</small>
               <strong>{liveKpis.requestsLabel}</strong>
-              <span>
-                <b>▲ <CountUp value={8.4} decimals={1} suffix="%" duration={1250} delay={120} /></b>
-                {' '}{tokenHub.hero.kpis.totalRequests.deltaNote}
-              </span>
+              {liveKpis.requestDeltaPercent === null ? null : (
+                <span>
+                  <b className={liveKpis.requestDeltaPercent >= 0 ? undefined : 'hub-kpi-delta--down'}>
+                    {liveKpis.requestDeltaPercent >= 0 ? '▲' : '▼'} {Math.abs(liveKpis.requestDeltaPercent).toFixed(1)}%
+                  </b>
+                  {' '}{tokenHub.hero.kpis.totalRequests.deltaNote}
+                </span>
+              )}
             </article>
             <article className="hub-kpi hub-kpi--wide">
               <small>{tokenHub.hero.kpis.tokensProcessed.label}</small>
               <strong>
                 {liveKpis.tokensLabel}
-                <span className="count-up-suffix count-up-suffix--spaced">{tokenHub.hero.kpis.tokensProcessed.unit}</span>
+                {liveKpis.tokensUnit ? (
+                  <span className="count-up-suffix count-up-suffix--spaced">{liveKpis.tokensUnit}</span>
+                ) : null}
               </strong>
-              <em>
-                <b>▲ <CountUp value={12.1} decimals={1} suffix="%" duration={1250} delay={200} /></b>
-                {' '}{tokenHub.hero.kpis.tokensProcessed.deltaNote}
-              </em>
+              {liveKpis.tokenDeltaPercent === null ? null : (
+                <em>
+                  <b className={liveKpis.tokenDeltaPercent >= 0 ? undefined : 'hub-kpi-delta--down'}>
+                    {liveKpis.tokenDeltaPercent >= 0 ? '▲' : '▼'} {Math.abs(liveKpis.tokenDeltaPercent).toFixed(1)}%
+                  </b>
+                  {' '}{tokenHub.hero.kpis.tokensProcessed.deltaNote}
+                </em>
+              )}
             </article>
             <article className="hub-kpi hub-kpi--mini">
               <small>{tokenHub.hero.kpis.mini[0].label}</small>
@@ -319,15 +328,15 @@ export default function TokenHubPage() {
             <article className="usage-card chart-card" aria-label={tokenHub.usage.chart.title}>
               <header>
                 <b>{tokenHub.usage.chart.title}</b>
-                <span>{tokenHub.usage.chart.peak}</span>
+                <span>{tokenHub.usage.chart.peak} {liveUsage.chart.peakValue}</span>
               </header>
               <div className="bar-chart" role="img" aria-label={tokenHub.usage.chart.title}>
-                {HOURLY_BARS.map((bar, index) => (
-                  <i aria-hidden="true" key={`bar-${index}`} style={{ height: `${bar}%` }} />
+                {liveUsage.chart.bars.map(bar => (
+                  <i aria-hidden="true" key={bar.day} title={bar.day} style={{ height: `${bar.heightPercent}%` }} />
                 ))}
               </div>
               <footer>
-                {tokenHub.usage.chart.axis.map((label) => <span key={label}>{label}</span>)}
+                {liveUsage.chart.axis.map((label, index) => <span key={`${label}-${index}`}>{label}</span>)}
               </footer>
             </article>
           </div>

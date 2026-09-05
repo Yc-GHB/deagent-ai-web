@@ -6,14 +6,33 @@ import { usePathname } from 'next/navigation'
 import { ArrowUpRight, ChevronDown, Globe, Menu, X } from 'lucide-react'
 import { useI18n } from '@/i18n/I18nProvider'
 import { LOCALE_META, type Locale } from '@/i18n/locales'
+import { isTokenHubHref, SHOW_TOKEN_HUB } from '@/config/feature-flags'
 import GetAiaModal, { isGetAiaHref } from './GetAiaModal'
 import ConnectWalletButton from './ConnectWalletButton'
+
+type FlyoutColumn = {
+  title: string
+  items: ReadonlyArray<{ title: string; description?: string; href: string; external?: boolean }>
+}
+
+/**
+ * 按功能开关过滤导航 flyout（隐藏空列）。
+ */
+function filterFlyoutColumns(columns: readonly FlyoutColumn[]): FlyoutColumn[] {
+  if (SHOW_TOKEN_HUB) return columns.map(column => ({ ...column, items: [...column.items] }))
+  return columns
+    .map(column => ({
+      ...column,
+      items: column.items.filter(item => !isTokenHubHref(item.href)),
+    }))
+    .filter(column => column.items.length > 0)
+}
 
 function getActiveNavId(pathname: string, hash: string): string {
   const path = pathname.toLowerCase().replace(/\/$/, '') || '/'
   if (path === '/agents' || path === '/ai-agent' || path === '/alphax' || path === '/token-hub') return 'PRODUCT'
   if (path === '/solutions' || path === '/products' || path === '/case-studies' || path === '/integrations') return 'ECOSYSTEM'
-  if (path === '/community' || path === '/event') return 'LEARN'
+  if (path === '/community' || path === '/event' || path.startsWith('/aia-game')) return 'LEARN'
   if (path === '/buyback') return '$AIA'
   switch (hash) {
     case '#product': return 'PRODUCT'
@@ -55,11 +74,6 @@ function SiteLink({ href, className, external, onClick, children, ...rest }: Sit
       {children}
     </Link>
   )
-}
-
-type FlyoutColumn = {
-  title: string
-  items: ReadonlyArray<{ title: string; description?: string; href: string; external?: boolean }>
 }
 
 function NavigationFlyout({
@@ -260,6 +274,7 @@ export default function SiteNavigation() {
                 )
               }
               const isOpen = activeNavMenu === item.id
+              const flyoutColumns = filterFlyoutColumns(flyout.columns as readonly FlyoutColumn[])
               return (
                 <div
                   key={item.id}
@@ -279,7 +294,7 @@ export default function SiteNavigation() {
                   </button>
                   {isOpen && (
                     <NavigationFlyout
-                      columns={flyout.columns}
+                      columns={flyoutColumns}
                       onNavigate={() => setActiveNavMenu(null)}
                       onOpenGetAia={openGetAiaModal}
                     />
@@ -319,7 +334,8 @@ export default function SiteNavigation() {
               )
             }
             const isExpanded = mobileSection === item.id
-            const childLinks = (flyout.columns as readonly FlyoutColumn[]).flatMap(column => column.items)
+            const childLinks = filterFlyoutColumns(flyout.columns as readonly FlyoutColumn[]).flatMap(column => column.items)
+            if (childLinks.length === 0) return null
             return (
               <div
                 key={item.id}

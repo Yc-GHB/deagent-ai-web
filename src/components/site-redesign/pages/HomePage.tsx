@@ -422,7 +422,7 @@ export default function HomePage() {
               title={`${home.voices.title} 1`}
             />
           </div>
-          <div className='voices-grid' aria-label={home.voices.gridAria}>
+          {/* <div className='voices-grid' aria-label={home.voices.gridAria}>
             {HOME_VOICE_ITEMS.slice(1).map((item, index) => (
               <div key={item.videoId} className='voices-grid-item'>
                 <VoicesVideo
@@ -432,7 +432,7 @@ export default function HomePage() {
                 />
               </div>
             ))}
-          </div>
+          </div> */}
         </section>
 
         <section id='partners' className='content-section partners-section'>

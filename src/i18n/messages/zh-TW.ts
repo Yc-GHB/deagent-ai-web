@@ -55,7 +55,7 @@ export const zhTW: LocaleMessages = {
             title: "基礎設施",
             items: [
               {
-                title: "AI Token Hub",
+                title: "AI Token Smart Router",
                 description: "一個 API，全部模型",
                 href: "/token-hub",
               },
@@ -105,13 +105,18 @@ export const zhTW: LocaleMessages = {
             items: [
               { title: "社群", description: "活動與聚會", href: "/community" },
               {
+                title: "Catch $AIA",
+                description: "攝影機手勢小遊戲",
+                href: "/aia-game",
+              },
+              {
                 title: "白皮書",
                 description: "閱讀白皮書",
                 href: "https://deagentai.gitbook.io/deagentai",
                 external: true,
               },
               {
-                title: "MiCA 白皮書",
+                title: "MiCAR 白皮書",
                 description: "合規",
                 href: "https://deagent.ai/micar-whitepaper.pdf",
                 external: true,
@@ -139,7 +144,7 @@ export const zhTW: LocaleMessages = {
         { label: "AI Agents", badge: "NEW", href: "/agents" },
         { label: "AlphaX", href: "/alphax" },
         { label: "CorrAI", href: "https://corr.ai/en" },
-        { label: "AI Token Hub", href: "/token-hub" },
+        { label: "AI Token Smart Router", href: "/token-hub" },
       ],
     },
     community: {
@@ -288,7 +293,7 @@ export const zhTW: LocaleMessages = {
       beta: "內測中 · 連接錢包即可開始",
       title: "AI Agents",
       description:
-        "一鍵部署——無需自備 API Key。每次推理經 AI Token Hub 結算，可用 $AIA 或 $USDT 支付。首個智慧體：Sentry，全天候監控整個 Hyperliquid 市場。",
+        "一鍵部署——無需自備 API Key。每次推理經 AI Token Smart Router 結算，可用 $AIA 或 $USDT 支付。首個智慧體：Sentry，全天候監控整個 Hyperliquid 市場。",
       kpis: [
         {
           label: "覆蓋市場",
@@ -539,7 +544,7 @@ export const zhTW: LocaleMessages = {
       codeSample: {
         filename: "agent.py",
         commentRuntime:
-          "# 智慧體運行時：Agno AgentOS，模型經 AI Token Hub 路由",
+          "# 智慧體運行時：Agno AgentOS，模型經 AI Token Smart Router 路由",
         agentName: "Hyperliquid Screener",
         instruction: "你是市場篩選器，不是顧問。",
         commentScreening: "# 篩選是純計算，零 token 成本",
@@ -607,7 +612,7 @@ export const zhTW: LocaleMessages = {
 
   tokenHub: {
     hero: {
-      title: "AI TOKEN HUB",
+      title: "AI TOKEN SMART ROUTER",
       copyBefore: "一個端点接入全部前沿模型。按 token 计費，可用 ",
       copyStrongAia: "$AIA",
       copyMiddle: " 或 ",
@@ -642,7 +647,8 @@ export const zhTW: LocaleMessages = {
       title: "先服務企業，再開放個人。",
       copy: "在向個人開放之前，该网关已在企業生產環境中穩定運行。",
       asideTitle: "同一网关，同一 SLA。",
-      asideCopy: "限流、故障轉移與按次计量均来自企業級需求。個人用戶獲得同等能力，無降級版本。",
+      asideCopy:
+        "限流、故障轉移與按次计量均来自企業級需求。個人用戶獲得同等能力，無降級版本。",
       facts: [
         { value: "8", label: "企業客戶 · 已上线" },
         { value: "99.97%", label: "30 日可用性", highlight: true },
@@ -656,20 +662,60 @@ export const zhTW: LocaleMessages = {
         title: "最近調用",
         updated: "每小时更新",
         rows: [
-          { time: "14:00", model: "claude-opus-5", tokens: "4,320 tok", latency: "842ms" },
-          { time: "13:58", model: "gpt-5.2", tokens: "1,920 tok", latency: "312ms" },
-          { time: "13:41", model: "gemini-3-pro", tokens: "7,110 tok", latency: "1,104ms" },
-          { time: "13:22", model: "deepseek-v4", tokens: "2,640 tok", latency: "598ms" },
-          { time: "13:09", model: "grok-4", tokens: "980 tok", latency: "176ms" },
-          { time: "12:55", model: "qwen3-max", tokens: "5,760 tok", latency: "920ms" },
-          { time: "12:31", model: "alphax-1", tokens: "3,120 tok", latency: "740ms" },
-          { time: "12:14", model: "llama-4-405b", tokens: "6,480 tok", latency: "1,260ms" },
+          {
+            time: "14:00",
+            model: "claude-opus-5",
+            tokens: "4,320 tok",
+            latency: "842ms",
+          },
+          {
+            time: "13:58",
+            model: "gpt-5.2",
+            tokens: "1,920 tok",
+            latency: "312ms",
+          },
+          {
+            time: "13:41",
+            model: "gemini-3-pro",
+            tokens: "7,110 tok",
+            latency: "1,104ms",
+          },
+          {
+            time: "13:22",
+            model: "deepseek-v4",
+            tokens: "2,640 tok",
+            latency: "598ms",
+          },
+          {
+            time: "13:09",
+            model: "grok-4",
+            tokens: "980 tok",
+            latency: "176ms",
+          },
+          {
+            time: "12:55",
+            model: "qwen3-max",
+            tokens: "5,760 tok",
+            latency: "920ms",
+          },
+          {
+            time: "12:31",
+            model: "alphax-1",
+            tokens: "3,120 tok",
+            latency: "740ms",
+          },
+          {
+            time: "12:14",
+            model: "llama-4-405b",
+            tokens: "6,480 tok",
+            latency: "1,260ms",
+          },
         ],
       },
       chart: {
-        title: "每小时 Tokens · 近 24 小时",
-        peak: "峰值 61.4M",
-        axis: ["00:00", "08:00", "16:00", "當前"],
+        title: "每日 Tokens · 近 15 天",
+        peak: "峰值",
+        axis: ["", "", "", ""],
       },
     },
     models: {
@@ -677,13 +723,70 @@ export const zhTW: LocaleMessages = {
       title: "一個 API Key，38 個模型。",
       copy: "主流閉源與開源模型統一封装为 OpenAI 兼容協議，切換模型只需改一個字符串。",
       items: [
-        { name: "Claude Opus 5", provider: "ANTHROPIC", price: "$15.00 / 1M out", volume: "占 Hub 流量 34%", volumePercent: 85, logo: "A", logoColor: "#d97757" },
-        { name: "GPT-5.2", provider: "OPENAI", price: "$12.00 / 1M out", volume: "占 Hub 流量 26%", volumePercent: 65, logo: "O", logoColor: "#10a37f" },
-        { name: "Gemini 3 Pro", provider: "GOOGLE", price: "$8.00 / 1M out", volume: "占 Hub 流量 17%", volumePercent: 42, logo: "G", logoColor: "#4285f4" },
-        { name: "DeepSeek V4", provider: "DEEPSEEK", price: "$1.10 / 1M out", volume: "占 Hub 流量 12%", volumePercent: 30, logo: "D", logoColor: "#4d6bfe" },
-        { name: "Grok 4", provider: "XAI", price: "$9.00 / 1M out", volume: "占 Hub 流量 6%", volumePercent: 15, logo: "X", logoColor: "#ffffff", logoTextColor: "#1a1a1a" },
-        { name: "Qwen 3 Max", provider: "ALIBABA", price: "$2.40 / 1M out", volume: "占 Hub 流量 3%", volumePercent: 8, logo: "Q", logoColor: "#7c3aed" },
-        { name: "Llama 4 405B", provider: "META · OSS", price: "$0.90 / 1M out", volume: "占 Hub 流量 1.5%", volumePercent: 4, logo: "M", logoColor: "#0668e1" },
+        {
+          name: "Claude Opus 5",
+          provider: "ANTHROPIC",
+          price: "$15.00 / 1M out",
+          volume: "占 Hub 流量 34%",
+          volumePercent: 85,
+          logo: "A",
+          logoColor: "#d97757",
+        },
+        {
+          name: "GPT-5.2",
+          provider: "OPENAI",
+          price: "$12.00 / 1M out",
+          volume: "占 Hub 流量 26%",
+          volumePercent: 65,
+          logo: "O",
+          logoColor: "#10a37f",
+        },
+        {
+          name: "Gemini 3 Pro",
+          provider: "GOOGLE",
+          price: "$8.00 / 1M out",
+          volume: "占 Hub 流量 17%",
+          volumePercent: 42,
+          logo: "G",
+          logoColor: "#4285f4",
+        },
+        {
+          name: "DeepSeek V4",
+          provider: "DEEPSEEK",
+          price: "$1.10 / 1M out",
+          volume: "占 Hub 流量 12%",
+          volumePercent: 30,
+          logo: "D",
+          logoColor: "#4d6bfe",
+        },
+        {
+          name: "Grok 4",
+          provider: "XAI",
+          price: "$9.00 / 1M out",
+          volume: "占 Hub 流量 6%",
+          volumePercent: 15,
+          logo: "X",
+          logoColor: "#ffffff",
+          logoTextColor: "#1a1a1a",
+        },
+        {
+          name: "Qwen 3 Max",
+          provider: "ALIBABA",
+          price: "$2.40 / 1M out",
+          volume: "占 Hub 流量 3%",
+          volumePercent: 8,
+          logo: "Q",
+          logoColor: "#7c3aed",
+        },
+        {
+          name: "Llama 4 405B",
+          provider: "META · OSS",
+          price: "$0.90 / 1M out",
+          volume: "占 Hub 流量 1.5%",
+          volumePercent: 4,
+          logo: "M",
+          logoColor: "#0668e1",
+        },
       ],
       more: {
         name: "+31 更多模型",
@@ -699,7 +802,7 @@ export const zhTW: LocaleMessages = {
       eyebrow: "整合",
       title: "三行代码完成迁移。",
       codeFilename: "client.py",
-      codeAria: "AI Token Hub 整合示例",
+      codeAria: "AI Token Smart Router 整合示例",
       steps: [
         {
           title: "連接钱包，鑄造 Key",
@@ -725,7 +828,10 @@ export const zhTW: LocaleMessages = {
         { text: ")", tone: "yellow" },
         { text: "resp = client.chat.completions.create(", tone: "yellow" },
         { text: '  model="claude-opus-5",', tone: "cyan" },
-        { text: '  messages=[{"role": "user", "content": "gm"}],', tone: "cyan" },
+        {
+          text: '  messages=[{"role": "user", "content": "gm"}],',
+          tone: "cyan",
+        },
         { text: ")", tone: "yellow" },
         { text: "# x-hub-tokens: 42  x-hub-cost: 0.0009 $AIA", tone: "muted" },
       ],
@@ -733,18 +839,34 @@ export const zhTW: LocaleMessages = {
     ecosystem: {
       eyebrow: "生态角色",
       title: "先为自有智能体而建。",
-      copy: "AI Token Hub 并非獨立新產品，而是自有智能体自始運行的推理层，在内部处理 8.4 億次調用後向外部開發者開放。",
+      copy: "AI Token Smart Router 并非獨立新產品，而是自有智能体自始運行的推理层，在内部处理 8.4 億次調用後向外部開發者開放。",
       steps: [
-        { number: "01", title: "智能体", copy: "Sentry 與平台内全部智能体的推理均經 Hub 路由。" },
-        { number: "02", title: "路由", copy: "在 38 個模型间自动路由與故障轉移，按延迟、成本與可用性加权。" },
-        { number: "03", title: "计量", copy: "按 token 计量。請求與響應体永不持久化，僅保留计数與延迟。" },
-        { number: "04", title: "開放接入", copy: "同一网关與 SLA，直接向第三方開發者開放。" },
+        {
+          number: "01",
+          title: "智能体",
+          copy: "Sentry 與平台内全部智能体的推理均經 Hub 路由。",
+        },
+        {
+          number: "02",
+          title: "路由",
+          copy: "在 38 個模型间自动路由與故障轉移，按延迟、成本與可用性加权。",
+        },
+        {
+          number: "03",
+          title: "计量",
+          copy: "按 token 计量。請求與響應体永不持久化，僅保留计数與延迟。",
+        },
+        {
+          number: "04",
+          title: "開放接入",
+          copy: "同一网关與 SLA，直接向第三方開發者開放。",
+        },
       ],
       diagram: {
         callersLabel: "調用方",
         gatewayLabel: "統一网关",
         modelsLabel: "模型层",
-        hubTitle: "AI Token Hub",
+        hubTitle: "AI Token Smart Router",
         hubSubtitle: "OpenAI 兼容 · 直連自建",
         hubBullets: [
           "統一鑑权與配額",
@@ -775,7 +897,7 @@ export const zhTW: LocaleMessages = {
       copy: "候補名單成员可优先獲得访问权限與 100 萬起始 token 額度。",
       emailAria: "郵箱",
       emailPlaceholder: "輸入郵箱",
-      submit: "加入候補名單",
+      submit: "申請",
       submitting: "提交中…",
       success: "已成功加入候補名單",
       alreadyJoined: "您已在候補名單中",
@@ -894,8 +1016,8 @@ export const zhTW: LocaleMessages = {
     credentials: {
       title: "取得存取憑證",
       copy: "描述你的系統與用例；我們將提供匹配的整合規格與支援。",
-      inputLabel: "你的信箱或 Telegram",
-      inputPlaceholder: "你的信箱 / Telegram",
+      inputLabel: "你的信箱",
+      inputPlaceholder: "你的信箱",
       submit: "聯繫我們",
     },
   },
@@ -1019,6 +1141,11 @@ export const zhTW: LocaleMessages = {
       title: "DeAgentAI 最新動態",
       posts: [
         {
+          date: "2026年8月",
+          title: "從智能層到經濟層：我們如何在熊市運轉價值飛輪",
+          href: "https://medium.com/@deagent.ai/from-intelligence-layer-to-economic-layer-how-we-ran-the-value-flywheel-in-the-bear-market-3a9936bbfcca",
+        },
+        {
           date: "2026年4月",
           title: "模型已經足夠強大。接下來呢？",
           href: "https://medium.com/@deagent.ai/the-model-is-powerful-enough-what-comes-next-f1e0909ae66d",
@@ -1032,11 +1159,6 @@ export const zhTW: LocaleMessages = {
           date: "2025年10月",
           title: "AI 預言機已經失效。修復應是密碼學的，而非聲譽的。",
           href: "https://medium.com/@deagent.ai/ai-oracles-are-broken-the-fix-is-cryptographic-not-reputational-e89c40db71b4",
-        },
-        {
-          date: "2025年9月",
-          title: "$AIA Genesis Staking",
-          href: "https://medium.com/@deagent.ai/aia-genesis-staking-81d03e1bf72d",
         },
       ],
     },

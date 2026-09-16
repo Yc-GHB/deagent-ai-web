@@ -7,7 +7,7 @@ node_modules
 .git
 **/.git
 
-# 开发用源码目录（运行时由 public/aia-game 提供）
+# 开发用源码目录（运行时由 public/aia-anniversary 提供）
 AIA game
 
 # 开发工具与 CI

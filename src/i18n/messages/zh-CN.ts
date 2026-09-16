@@ -104,11 +104,7 @@ export const zhCN: LocaleMessages = {
             title: "学习",
             items: [
               { title: "社区", description: "活动与聚会", href: "/community" },
-              {
-                title: "Catch $AIA",
-                description: "摄像头手势小游戏",
-                href: "/aia-game",
-              },
+              { title: "W3Labs", description: "线下社区品牌", href: "/w3labs" },
               {
                 title: "白皮书",
                 description: "阅读白皮书",
@@ -126,6 +122,11 @@ export const zhCN: LocaleMessages = {
                 description: "文档与更多",
                 href: "https://medium.com/@deagent.ai",
                 external: true,
+              },
+              {
+                title: "一周年纪念卡",
+                description: "生成限量全息卡片",
+                href: "/aia-anniversary",
               },
             ],
           },
@@ -1295,6 +1296,67 @@ export const zhCN: LocaleMessages = {
       title: "AIA 持有者与自主智能体扩张同行受益。",
       copy: "随着更多智能体部署，协议活动上升。收入资助程序化回购，而按计划销毁永久削减可用供给。",
       strong: "可持续增长。价值对齐。结构性供给机制。",
+    },
+  },
+
+  w3labs: {
+    hero: {
+      title: "W3Labs",
+      subtitle: "DeAgentAI 生态基金孵化的线下社区品牌",
+    },
+    eventCards: {
+      openClawShenzhen: {
+        title: "OpenClaw Shenzhen",
+        lines: ["2,000 名参会者", "1,000+ 社区转化", "50% 转化率"],
+      },
+      szhkWeb3: {
+        title: "SZHK Web3",
+        lines: ["50 名参会者", "40+ 社区转化", "80%+ 转化率"],
+      },
+      hichuangRaccoonAi: {
+        title: "HiChuang × Raccoon AI",
+        lines: ["80+ 报名", "50+ 名参会者", "50%+ 到场率"],
+      },
+      opcWorkBuddy: {
+        title: "OPC × WorkBuddy",
+        lines: ["86 人报名", "50+ 名参会者", "58%+ 到场率"],
+      },
+      hichuangEurasia: {
+        title: "HiChuang Eurasia Meetup",
+        lines: ["50+ 名参会者", "社区激活"],
+      },
+    },
+    purpose: {
+      titleLine1: "为线下现场而生，",
+      titleLine2: "而不只是为信息流。",
+      copy: "W3Labs 为开发者、创始人和充满好奇的建设者提供面对面交流的空间，交换可落地的想法，并与 DeAgentAI 生态共同成长。",
+      photoAlts: [
+        "SZHK Web3 演讲嘉宾",
+        "SZHK Web3 现场观众",
+        "SZHK Web3 活动场地",
+        "Raccoon AI 工作坊",
+        "Raccoon AI 社区走访",
+        "Raccoon AI 演讲嘉宾",
+      ],
+    },
+    archive: {
+      eventsAria: "W3Labs 活动",
+      wallAria: "W3Labs 社区照片墙",
+      wallTitle: "W3Labs 社区档案",
+      joinAria: "加入 W3Labs 社区",
+      expandPhoto: "放大 {title} 照片 {index}",
+      expandWallPhoto: "放大社区档案照片 {index}",
+      photoAlt: "{title} — {index}",
+      wallPhotoAlt: "W3Labs 社区档案 — {index}",
+      galleryAria: "{title} 照片廊",
+      reelAria: "{title} 照片卷轴",
+      lightboxAria: "{title} 照片 {index}",
+      closePreview: "关闭照片预览",
+    },
+    cta: {
+      title: "加入下一场对话。",
+      copy: "连接 DeAgentAI 社区，关注即将到来的 W3Labs 线下活动。",
+      button: "加入社区",
     },
   },
 

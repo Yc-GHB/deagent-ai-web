@@ -26,10 +26,19 @@ const nextConfig = {
       { source: "/ai-agent", destination: "/agents", permanent: false },
       { source: "/products", destination: "/solutions", permanent: false },
       { source: "/event", destination: "/community", permanent: false },
-      { source: "/aia-game", destination: "/aia-game/index.html", permanent: false },
       {
         source: "/case-studies",
         destination: "/integrations",
+        permanent: true,
+      },
+      {
+        source: "/aia-game",
+        destination: "/aia-anniversary",
+        permanent: true,
+      },
+      {
+        source: "/aia-game/:path*",
+        destination: "/aia-anniversary/:path*",
         permanent: true,
       },
     ];

@@ -107,9 +107,9 @@ export const en = {
                 href: "/community",
               },
               {
-                title: "Catch $AIA",
-                description: "Camera gesture mini game",
-                href: "/aia-game",
+                title: "W3Labs",
+                description: "Offline community brand",
+                href: "/w3labs",
               },
               {
                 title: "Whitepaper",
@@ -128,6 +128,11 @@ export const en = {
                 description: "Docs & more",
                 href: "https://medium.com/@deagent.ai",
                 external: true,
+              },
+              {
+                title: "1st Anniversary Card",
+                description: "Generate a limited holographic card",
+                href: "/aia-anniversary",
               },
             ],
           },
@@ -1384,6 +1389,84 @@ export const en = {
       title: "AIA holders benefit alongside autonomous agent proliferation.",
       copy: "As more agents deploy, protocol activity rises. Revenue funds programmatic buybacks, while scheduled burns permanently reduce available supply.",
       strong: "Sustainable growth. Aligned value. Structural supply mechanics.",
+    },
+  },
+
+  w3labs: {
+    hero: {
+      title: "W3Labs",
+      subtitle:
+        "Offline community brand incubated by the DeAgentAI Ecosystem Fund",
+    },
+    eventCards: {
+      openClawShenzhen: {
+        title: "OpenClaw Shenzhen",
+        lines: [
+          "2,000 Attendees",
+          "1,000+ Community Conversions",
+          "50% Conversion Rate",
+        ],
+      },
+      szhkWeb3: {
+        title: "SZHK Web3",
+        lines: [
+          "50 Attendees",
+          "40+ Community Conversions",
+          "80%+ Conversion Rate",
+        ],
+      },
+      hichuangRaccoonAi: {
+        title: "HiChuang × Raccoon AI",
+        lines: [
+          "80+ Registrations",
+          "50+ Attendees",
+          "50%+ Attendance Rate",
+        ],
+      },
+      opcWorkBuddy: {
+        title: "OPC × WorkBuddy",
+        lines: [
+          "86 Registrations",
+          "50+ Attendees",
+          "58%+ Attendance Rate",
+        ],
+      },
+      hichuangEurasia: {
+        title: "HiChuang Eurasia Meetup",
+        lines: ["50+ Attendees", "Community Activation"],
+      },
+    },
+    purpose: {
+      titleLine1: "Built for the room,",
+      titleLine2: "not just the feed.",
+      copy: "W3Labs creates space for developers, founders, and curious builders to meet in person, exchange practical ideas, and grow with the DeAgentAI ecosystem.",
+      photoAlts: [
+        "SZHK Web3 speaker",
+        "SZHK Web3 audience",
+        "SZHK Web3 venue",
+        "Raccoon AI workshop",
+        "Raccoon AI community visit",
+        "Raccoon AI speaker",
+      ],
+    },
+    archive: {
+      eventsAria: "W3Labs events",
+      wallAria: "W3Labs community photo wall",
+      wallTitle: "W3Labs Community Archive",
+      joinAria: "Join the W3Labs community",
+      expandPhoto: "Expand {title} photo {index}",
+      expandWallPhoto: "Expand community archive photo {index}",
+      photoAlt: "{title} — {index}",
+      wallPhotoAlt: "W3Labs community archive — {index}",
+      galleryAria: "{title} photo gallery",
+      reelAria: "{title} photo reel",
+      lightboxAria: "{title} photo {index}",
+      closePreview: "Close photo preview",
+    },
+    cta: {
+      title: "Join the next conversation.",
+      copy: "Connect with the DeAgentAI community and follow upcoming W3Labs gatherings.",
+      button: "Join Community",
     },
   },
 

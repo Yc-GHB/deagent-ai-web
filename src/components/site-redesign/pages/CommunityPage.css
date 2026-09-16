@@ -23,7 +23,10 @@
 .community-section-header h2, .community-snapshots h2, .community-conversation-copy h2, .community-ambassador h2, .community-blogs h2 { margin-bottom: 0; font-size: 40px; font-weight: 700; line-height: 48px; letter-spacing: -.02em; }
 .community-section-header p { margin-bottom: 0; color: #a1a1aa; font-size: 15px; line-height: 24px; }
 .community-stats-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 24px; }
-.community-stats-grid article { min-height: 159px; height: auto; padding: 34px; border: 1px solid #1c1c20; border-radius: 16px; background: #080809; }
+.community-stats-grid article { min-height: 159px; height: auto; padding: 34px; border: 1px solid #1c1c20; border-radius: 16px; background: #080809; transition: border-color .18s ease, transform .18s ease; }
+.community-stats-card--link { cursor: pointer; }
+.community-stats-card-link { display: block; color: inherit; text-decoration: none; }
+.community-stats-card--link:hover { border-color: rgba(44,224,234,.7); transform: translateY(-2px); }
 .community-stats-grid strong { display: block; margin-bottom: 8px; font-size: 32px; line-height: 40px; }
 .community-stats-grid article:first-child strong { background: linear-gradient(90deg, #fff, #2ce0ea); background-clip: text; color: transparent; }
 .community-stats-grid .community-city-value { font-size: 32px; white-space: normal; }

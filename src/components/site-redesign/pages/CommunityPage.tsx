@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { MessageCircle, Send } from 'lucide-react'
 import { useI18n } from '@/i18n/I18nProvider'
 import type { Messages } from '@/i18n/messages/types'
@@ -95,22 +96,36 @@ export default function CommunityPage() {
             <h2 id="traction-title">{community.traction.title}</h2>
           </header>
           <div className="community-stats-grid">
-            {community.traction.stats.map((stat: CommunityMessages['traction']['stats'][number], index: number) => (
-              <article key={stat.title}>
-                <strong className={index === 1 ? 'community-city-value' : undefined}>
-                  {typeof stat.value === 'number' ? (
-                    <>
-                      <CountUp value={stat.value} />
-                      {'valueSuffix' in stat && stat.valueSuffix ? stat.valueSuffix : null}
-                    </>
+            {community.traction.stats.map((stat: CommunityMessages['traction']['stats'][number], index: number) => {
+              const isW3LabsCard = index === 1
+              const cardBody = (
+                <>
+                  <strong className={isW3LabsCard ? 'community-city-value' : undefined}>
+                    {typeof stat.value === 'number' ? (
+                      <>
+                        <CountUp value={stat.value} />
+                        {'valueSuffix' in stat && stat.valueSuffix ? stat.valueSuffix : null}
+                      </>
+                    ) : (
+                      stat.value
+                    )}
+                  </strong>
+                  <h3>{stat.title}</h3>
+                  {stat.footnote ? <p>{stat.footnote}</p> : null}
+                </>
+              )
+              return (
+                <article key={stat.title} className={isW3LabsCard ? 'community-stats-card--link' : undefined}>
+                  {isW3LabsCard ? (
+                    <Link href="/w3labs" className="community-stats-card-link" aria-label="W3Labs">
+                      {cardBody}
+                    </Link>
                   ) : (
-                    stat.value
+                    cardBody
                   )}
-                </strong>
-                <h3>{stat.title}</h3>
-                {stat.footnote ? <p>{stat.footnote}</p> : null}
-              </article>
-            ))}
+                </article>
+              )
+            })}
           </div>
         </div>
       </section>

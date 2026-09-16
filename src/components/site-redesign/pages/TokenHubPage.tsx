@@ -56,7 +56,7 @@ const MODEL_LAYER_LOGOS: readonly { readonly logos: readonly ModelLogoAsset[] }[
   { logos: [{ title: 'More models', plus: true, color: '#16181A' }] },
 ]
 
-const ENTERPRISE_IMAGE_SRC = '/figma-assets/token-hub-new/raw-03.jpeg'
+const ENTERPRISE_IMAGE_SRC = '/figma-assets/token-hub-new/raw-03.png'
 const WAITLIST_BG_SRC = '/figma-assets/token-hub-new/raw-07.png'
 
 function Eyebrow({ children }: { children: React.ReactNode }) {

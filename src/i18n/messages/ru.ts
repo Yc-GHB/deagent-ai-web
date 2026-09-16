@@ -109,9 +109,9 @@ export const ru: LocaleMessages = {
                 href: "/community",
               },
               {
-                title: "Catch $AIA",
-                description: "Мини-игра с жестами камеры",
-                href: "/aia-game",
+                title: "W3Labs",
+                description: "Офлайн-бренд сообщества",
+                href: "/w3labs",
               },
               {
                 title: "Whitepaper",
@@ -130,6 +130,11 @@ export const ru: LocaleMessages = {
                 description: "Документы и другое",
                 href: "https://medium.com/@deagent.ai",
                 external: true,
+              },
+              {
+                title: "Карта к 1-й годовщине",
+                description: "Создать лимитированную голографическую карту",
+                href: "/aia-anniversary",
               },
             ],
           },
@@ -1390,6 +1395,67 @@ export const ru: LocaleMessages = {
       copy: "По мере развёртывания агентов растёт активность протокола. Выручка финансирует программные байбэки, а плановые сжигания навсегда сокращают доступное предложение.",
       strong:
         "Устойчивый рост. Согласованная ценность. Структурная механика предложения.",
+    },
+  },
+
+  w3labs: {
+    hero: {
+      title: "W3Labs",
+      subtitle: "Офлайн-бренд сообщества, инкубированный фондом экосистемы DeAgentAI",
+    },
+    eventCards: {
+      openClawShenzhen: {
+        title: "OpenClaw Shenzhen",
+        lines: ["2 000 участников", "1 000+ конверсий в сообщество", "конверсия 50%"],
+      },
+      szhkWeb3: {
+        title: "SZHK Web3",
+        lines: ["50 участников", "40+ конверсий в сообщество", "конверсия 80%+"],
+      },
+      hichuangRaccoonAi: {
+        title: "HiChuang × Raccoon AI",
+        lines: ["80+ регистраций", "50+ участников", "посещаемость 50%+"],
+      },
+      opcWorkBuddy: {
+        title: "OPC × WorkBuddy",
+        lines: ["86 регистраций", "50+ участников", "посещаемость 58%+"],
+      },
+      hichuangEurasia: {
+        title: "HiChuang Eurasia Meetup",
+        lines: ["50+ участников", "активация сообщества"],
+      },
+    },
+    purpose: {
+      titleLine1: "Для живой комнаты,",
+      titleLine2: "а не только для ленты.",
+      copy: "W3Labs создаёт пространство, где разработчики, фаундеры и любопытные билдеры встречаются лично, обмениваются практическими идеями и растут вместе с экосистемой DeAgentAI.",
+      photoAlts: [
+        "Спикер SZHK Web3",
+        "Аудитория SZHK Web3",
+        "Площадка SZHK Web3",
+        "Воркшоп Raccoon AI",
+        "Визит сообщества Raccoon AI",
+        "Спикер Raccoon AI",
+      ],
+    },
+    archive: {
+      eventsAria: "События W3Labs",
+      wallAria: "Фотостена сообщества W3Labs",
+      wallTitle: "Архив сообщества W3Labs",
+      joinAria: "Присоединиться к сообществу W3Labs",
+      expandPhoto: "Открыть фото {index} — {title}",
+      expandWallPhoto: "Открыть фото архива сообщества {index}",
+      photoAlt: "{title} — {index}",
+      wallPhotoAlt: "Архив сообщества W3Labs — {index}",
+      galleryAria: "Галерея фото {title}",
+      reelAria: "Лента фото {title}",
+      lightboxAria: "Фото {title} {index}",
+      closePreview: "Закрыть предпросмотр",
+    },
+    cta: {
+      title: "Присоединяйтесь к следующему разговору.",
+      copy: "Свяжитесь с сообществом DeAgentAI и следите за ближайшими встречами W3Labs.",
+      button: "Вступить в сообщество",
     },
   },
 

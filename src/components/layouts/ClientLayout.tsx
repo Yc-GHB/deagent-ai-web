@@ -4,12 +4,19 @@ import { Web3Provider } from '../providers/Web3Provider'
 import SiteNavigation from '@/components/site-redesign/components/SiteNavigation'
 import { SiteFooter } from '@/components/site-redesign/components/SiteFooter'
 import { I18nProvider } from '@/i18n/I18nProvider'
+import { usePathname } from 'next/navigation'
 import '@/components/site-redesign/styles/site.css'
 
 /**
  * 全局客户端布局：统一导航与页脚，并提供站内多语言。
  */
 export function ClientLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname()
+
+  if (pathname === '/aia-anniversary' || pathname.startsWith('/aia-anniversary/')) {
+    return <>{children}</>
+  }
+
   return (
     <Web3Provider>
       <I18nProvider>

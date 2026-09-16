@@ -29,7 +29,11 @@ export const navigation: NavItem[] = [
         href: "https://deagentai.gitbook.io/deagentai",
         target: "_blank",
       },
-      { name: 'Micar_Whitepaper', href: 'https://deagent.ai/micar-whitepaper.pdf', target: '_blank' },
+      {
+        name: "Micar_Whitepaper",
+        href: "https://deagent.ai/micar-whitepaper.pdf",
+        target: "_blank",
+      },
     ],
   },
   { name: "BLOG", href: "https://medium.com/@deagent.ai", target: "_blank" },

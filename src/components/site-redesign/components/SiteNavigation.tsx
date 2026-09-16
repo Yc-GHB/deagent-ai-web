@@ -32,7 +32,7 @@ function getActiveNavId(pathname: string, hash: string): string {
   const path = pathname.toLowerCase().replace(/\/$/, '') || '/'
   if (path === '/agents' || path === '/ai-agent' || path === '/alphax' || path === '/token-hub') return 'PRODUCT'
   if (path === '/solutions' || path === '/products' || path === '/case-studies' || path === '/integrations') return 'ECOSYSTEM'
-  if (path === '/community' || path === '/event' || path.startsWith('/aia-game')) return 'LEARN'
+  if (path === '/community' || path === '/event' || path === '/w3labs' || path.startsWith('/aia-anniversary')) return 'LEARN'
   if (path === '/buyback') return '$AIA'
   switch (hash) {
     case '#product': return 'PRODUCT'

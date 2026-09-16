@@ -109,9 +109,9 @@ export const ja: LocaleMessages = {
                 href: "/community",
               },
               {
-                title: "Catch $AIA",
-                description: "カメラジェスチャーミニゲーム",
-                href: "/aia-game",
+                title: "W3Labs",
+                description: "オフラインコミュニティブランド",
+                href: "/w3labs",
               },
               {
                 title: "ホワイトペーパー",
@@ -130,6 +130,11 @@ export const ja: LocaleMessages = {
                 description: "ドキュメントなど",
                 href: "https://medium.com/@deagent.ai",
                 external: true,
+              },
+              {
+                title: "1周年記念カード",
+                description: "限定ホログラムカードを生成",
+                href: "/aia-anniversary",
               },
             ],
           },
@@ -1381,6 +1386,67 @@ export const ja: LocaleMessages = {
       title: "自律エージェントの増加とともに、AIA 保有者も恩恵を受けます。",
       copy: "エージェントが増えるほどプロトコル活動は上昇します。収益がプログラム的バイバックを資金調達し、スケジュールされたバーンが利用可能供給を恒久削減します。",
       strong: "持続可能な成長。揃った価値。構造的な供給メカニクス。",
+    },
+  },
+
+  w3labs: {
+    hero: {
+      title: "W3Labs",
+      subtitle: "DeAgentAI エコシステム基金が育成するオフラインコミュニティブランド",
+    },
+    eventCards: {
+      openClawShenzhen: {
+        title: "OpenClaw Shenzhen",
+        lines: ["来場者 2,000 人", "コミュニティ転換 1,000+", "転換率 50%"],
+      },
+      szhkWeb3: {
+        title: "SZHK Web3",
+        lines: ["来場者 50 人", "コミュニティ転換 40+", "転換率 80%+"],
+      },
+      hichuangRaccoonAi: {
+        title: "HiChuang × Raccoon AI",
+        lines: ["登録 80+", "来場者 50+", "出席率 50%+"],
+      },
+      opcWorkBuddy: {
+        title: "OPC × WorkBuddy",
+        lines: ["登録 86 人", "来場者 50+", "出席率 58%+"],
+      },
+      hichuangEurasia: {
+        title: "HiChuang Eurasia Meetup",
+        lines: ["来場者 50+", "コミュニティ活性化"],
+      },
+    },
+    purpose: {
+      titleLine1: "フィードのためではなく、",
+      titleLine2: "その場のために。",
+      copy: "W3Labs は、開発者、創業者、好奇心旺盛なビルダーが対面で出会い、実践的なアイデアを交わし、DeAgentAI エコシステムとともに成長するための場をつくります。",
+      photoAlts: [
+        "SZHK Web3 スピーカー",
+        "SZHK Web3 オーディエンス",
+        "SZHK Web3 会場",
+        "Raccoon AI ワークショップ",
+        "Raccoon AI コミュニティ訪問",
+        "Raccoon AI スピーカー",
+      ],
+    },
+    archive: {
+      eventsAria: "W3Labs イベント",
+      wallAria: "W3Labs コミュニティフォトウォール",
+      wallTitle: "W3Labs コミュニティアーカイブ",
+      joinAria: "W3Labs コミュニティに参加",
+      expandPhoto: "{title} の写真 {index} を拡大",
+      expandWallPhoto: "コミュニティアーカイブ写真 {index} を拡大",
+      photoAlt: "{title} — {index}",
+      wallPhotoAlt: "W3Labs コミュニティアーカイブ — {index}",
+      galleryAria: "{title} フォトギャラリー",
+      reelAria: "{title} フォトリール",
+      lightboxAria: "{title} 写真 {index}",
+      closePreview: "写真プレビューを閉じる",
+    },
+    cta: {
+      title: "次の対話に参加しよう。",
+      copy: "DeAgentAI コミュニティとつながり、今後の W3Labs オフラインイベントをフォローしましょう。",
+      button: "コミュニティに参加",
     },
   },
 

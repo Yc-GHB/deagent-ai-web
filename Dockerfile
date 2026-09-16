@@ -1,5 +1,5 @@
 # ========== 阶段 1：安装依赖 ==========
-FROM node:20.12.0-alpine AS deps
+FROM node:20.19-alpine AS deps
 
 WORKDIR /app
 
@@ -10,7 +10,7 @@ COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile
 
 # ========== 阶段 2：构建 ==========
-FROM node:20.12.0-alpine AS builder
+FROM node:20.19-alpine AS builder
 
 WORKDIR /app
 
@@ -29,7 +29,7 @@ ENV NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID="9f482f36a7f7da856de7c72de66d3129"
 RUN pnpm build && rm -rf .next/cache
 
 # ========== 阶段 3：运行（仅保留 standalone 产物） ==========
-FROM node:20.12.0-alpine AS runner
+FROM node:20.19-alpine AS runner
 
 WORKDIR /app
 
